@@ -6,7 +6,7 @@
 </head>
 <body>
     <h1>Form</h1>
-    <form action="index.php" method="post">
+    <form action="basicform.php" method="post">
         Email:<br>
         <input type="email" name="email">
         <br>
