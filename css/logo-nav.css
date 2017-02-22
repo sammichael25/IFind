@@ -1,0 +1,170 @@
+/*
+ * Start Bootstrap - Logo Nav (http://startbootstrap.com/)
+ * Copyright 2013-2016 Start Bootstrap
+ * Licensed under MIT (https://github.com/BlackrockDigital/startbootstrap/blob/gh-pages/LICENSE)
+ */
+
+body {
+    padding-top: 70px; /* Required padding for .navbar-fixed-top. Change if height of navigation changes. */
+}
+
+.navbar-fixed-top .nav {
+    padding: 15px 20px;
+}
+
+.navbar-fixed-top .navbar-brand {
+    padding: 0 15px;
+}
+
+@media(min-width:768px) {
+    body {
+        padding-top: 70px; /* Required padding for .navbar-fixed-top. Change if height of navigation changes. */
+    }
+
+    .navbar-fixed-top .navbar-brand {
+        padding: 15px 0;
+    }
+	
+}
+
+@media(max-width:248px) {
+	.business-header{
+	-webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+	}
+}
+.business-header {
+    height: 270px;
+    background: url(images/headerimg.jpg) 18% 86%;
+    background-size: 100% 108%;
+    background-repeat: no-repeat;
+}
+
+/* Customize the text color and shadow color and to optimize text legibility. */
+
+.tagline {
+    text-shadow: 0 0 10px #000;
+    color: #fff;
+}
+
+.img-center {
+    margin: 0 auto;
+}
+
+#indexfooter {
+    margin: 50px 0;
+	text-align: center;
+}
+
+.form-horizontal{
+    width: 50%;
+    display: block;
+    margin: 0 auto;
+}
+
+#form{
+    padding-top: 35px;
+
+}
+
+#formcontainer{
+	height:473px;
+}
+
+#logo{
+    width:200px;
+    height: 50px;
+}
+
+#logo2{
+    width:265px;
+    height: 115px;
+}
+
+#header-container{
+        height: 215px;
+}
+
+
+.signup-header1{
+	margin-top: 22px;
+    position: absolute;
+    z-index: 2;
+    background: rgba(255,255,255,0.79);
+    border-radius: 4px;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+.signup-header2{
+	margin: 10px 0 10px;
+    position: relative;
+    z-index: 1;
+    background: rgba(255,255,255,0.79);
+    border-radius: 4px;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+#signup-hd2{
+    padding-left: 0px;
+    padding-right: 0px;
+    height: 270px;
+    position: absolute;
+    margin-top: 38px;
+}
+
+#box{
+    height: 500px;
+    background: url(images/back.jpg) no-repeat;
+    background-size: 100% 100%;
+
+}
+
+#timetable{
+	font-family: "Lato", "Serif";
+	font-weight: 300;
+	padding:0;
+	margin:0;
+	font-size:16px;
+	line-height: 28px;
+	color: #55afff;
+	overflow-x:hidden;
+	/*background: url(images/back.jpg) no-repeat;
+    background-size: 100% 100%;*/
+}
+
+#body-row{
+    height:523px;
+}
+
+#footer-row{
+    height: 56px;
+}
+
+#timetablefooter {
+    height: 100%;
+	background: rgba(255,255,255,0.79);
+}
+
+vr {
+    background-color: #333;
+    width: 2px;
+    margin: 35px 5px 0px 730px;
+    position: absolute;
+    z-index: 4;
+    height: 340px;
+}
+
+.center {
+     float: none;
+     margin-left: auto;
+     margin-right: auto;
+     padding: 30px;
+}
+
+.signup-header1 p{
+    color:#777;
+    text-align: center;
+}

@@ -9,15 +9,16 @@ function register(){
     var email = $("#email").val();
     var password = $("#password").val();
     var password2 = $("#password2").val();
+    var department = $("#department").val();
 
 	
     var user = {
         
         "firstname" : Fname,
         "lastname" : Lname,
-		"username" : username,
         "email" : email,
-        "password" : password
+        "password" : password,
+        "department" : department
     };
 
     $.post("../index.php/signup", user, function(res){

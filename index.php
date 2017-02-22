@@ -19,17 +19,17 @@ $app->get('/', function (Request $request, Response $response) {
 $app->post("/signup", function(Request $request, Response $response){
 	$post = $request->getParsedBody();
 	
-	$Fname = $post['Fname'];
-	$Lname = $post['Lname'];
-	$username = $post['username'];
+	$fname = $post['Fname'];
+	$lname = $post['Lname'];
 	$email = $post['email'];
 	$password = $post['password'];
+	$deptId = $post['department'];
 	
-	$res = saveUser($Fname, $Lname, $username, $email, $password);
+	$res = saveUser($fname, $lname, $email, $password, $deptId);
 
 	if ($res){
 		$response = $response->withStatus(201);
-		$response = $response->withJson(array( "id" => $res));
+		$response = $response->withJson(array( "userId" => $res));
 	} else {
 		$response = $response->withStatus(400);
 	}
