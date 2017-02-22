@@ -9,14 +9,14 @@
 <meta name="description" content="">
 <meta name="author" content="">
 
-<title>Registeration</title>
+<title>Registration</title>
 
 
-<!------------------------------------------links--------------------------------------------------->
+<!------------------------------------------links------------------------------------------------- -->
 <link href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.css" rel="stylesheet">
 
 
-<!-------------------------------------------scripts------------------------------------------------->
+<!-------------------------------------------scripts----------------------------------------------- -->
 <script src="bower_components/angular/angular.min.js"></script>
 <script src="bower_components/angular-route/angular-route.min.js"></script>
 <script src="js/passScript.js"></script>
@@ -55,16 +55,6 @@
 
 <!-- Text input-->
 <div class="form-group">
-  <label class="col-md-4 control-label" for="username">Username <span style="color:red">*</span></label>  
-  <div class="col-md-4">
-  <input id="username" name="username" type="text" placeholder="example908" class="form-control input-md" ng-model-options="{ updateOn: 'blur' }" ng-model="user.username" ng-minlength="3" ng-maxlength="8" required="">
-  <p ng-show="userForm.username.$error.minlength" class="help-block">Username is too short.</p>
-  <p ng-show="userForm.username.$error.maxlength" class="help-block">Username is too long.</p>
-  </div>
-</div>
-
-<!-- Text input-->
-<div class="form-group">
   <label class="col-md-4 control-label" for="email">Email <span style="color:red">*</span> </label>  
   <div class="col-md-4">
   <input id="email" name="email" placeholder="janedoe@domain.com" class="form-control input-md" ng-model-options="{ updateOn: 'blur' }" ng-model="user.email" type="email" placeholder="johnDoe@example.com" class="form-control input-md" required="">
@@ -89,6 +79,16 @@
     <input id="password2" name="password2" type="password" placeholder="" class="form-control input-md" ng-model-options="{ updateOn: 'blur' }" ng-model="user.password2" required data-password-verify="user.password" required="">
   <p ng-show="userForm.password2.$error.passwordVerify" class="help-block">Passwords do not match </p>
     
+  </div>
+</div>
+
+<!-- Text input-->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="department">Department <span style="color:red">*</span></label>  
+  <div class="col-md-4">
+  <input id="department" name="department" type="text" placeholder="" class="form-control input-md" ng-model-options="{ updateOn: 'blur' }" ng-model="user.department" ng-minlength="3" ng-maxlength="8" required="">
+  <p ng-show="userForm.department.$error.minlength" class="help-block">Fix please</p>
+  <p ng-show="userForm.department.$error.maxlength" class="help-block">Fix please</p>
   </div>
 </div>
 

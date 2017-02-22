@@ -1,6 +1,6 @@
 <?php
 
-	//session_start();
+session_start();
 	
 function getDBConnection(){
 	try{ 
@@ -11,9 +11,9 @@ function getDBConnection(){
 	return null;
 }
 
-function saveUser($Fname, $Lname, $username, $email, $password){
+function saveUser($fname, $lname, $deptId, $email, $password){
 	$password = sha1($password);
-	$sql = "INSERT INTO `user` (`Fname`, `Lname`, `username`, `email`, `password`) VALUES ('$Fname', '$Lname', '$username', '$email', '$password');";
+	$sql = "INSERT INTO `user` (`fname`, `lname`, `email`, `password`,`departmentId`) VALUES ('$lname', '$lname', '$email', '$password', '$deptId');";
 	$id = -1;
 	$db = getDBConnection();
 	if ($db != NULL){
@@ -25,4 +25,9 @@ function saveUser($Fname, $Lname, $username, $email, $password){
 	}
 	return $id;
 }
+
+function login($email, $password){
+
+}
+
 ?>
