@@ -3,9 +3,9 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 21, 2017 at 06:35 AM
--- Server version: 10.1.19-MariaDB
--- PHP Version: 7.0.13
+-- Generation Time: Feb 22, 2017 at 01:16 AM
+-- Server version: 10.1.16-MariaDB
+-- PHP Version: 5.5.38
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -40,7 +40,8 @@ CREATE TABLE `building` (
 -- Dumping data for table `building`
 --
 
-INSERT INTO `building` (`buildingId`, `buildingName`, `GPS`, `facultyId`) VALUES(100, 'Faculty of Science and Technology Building', 0, 'FST');
+INSERT INTO `building` (`buildingId`, `buildingName`, `GPS`, `facultyId`) VALUES
+(100, 'Faculty of Science and Technology Building', 0, 'FST');
 
 -- --------------------------------------------------------
 
@@ -58,6 +59,29 @@ CREATE TABLE `course` (
   `departmentId` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data for table `course`
+--
+
+INSERT INTO `course` (`courseCode`, `courseName`, `sTime`, `fTime`, `day`, `departmentId`) VALUES
+('INFO1601', 'Introduction to WWW Programming', '08:00:00', '10:00:00', 'Monday', 'DCIT'),
+('INFO1601', 'Introduction to WWW Programming', '08:00:00', '10:00:00', 'Tuesday', 'DCIT'),
+('INFO1601', 'Introduction to WWW Programming', '14:00:00', '16:00:00', 'Wednesday', 'DCIT'),
+('INFO1601', 'Introduction to WWW Porgramming', '15:00:00', '17:00:00', 'Friday', 'DCIT'),
+('INFO2400', 'Information Systems Development', '13:00:00', '15:00:00', 'Wednesday', 'DCIT'),
+('INFO2405', 'Discrete Mathematics', '09:00:00', '10:00:00', 'Thursday', 'DCIT'),
+('INFO2405', 'Discrete Mathematics', '14:00:00', '15:00:00', 'Friday', 'DCIT'),
+('INFO2410', 'Fundamental Data Structure', '13:00:00', '14:00:00', 'Friday', 'DCIT'),
+('INFO2410', 'Fundamental Data Structure', '14:00:00', '16:00:00', 'Monday', 'DCIT'),
+('INFO2500', 'Networking Technologies Fundamentals', '18:00:00', '20:00:00', 'Monday', 'DCIT'),
+('INFO3410', 'Web Systems & Technologies', '14:00:00', '16:00:00', 'Wednesday', 'DCIT'),
+('INFO3435', 'E-Commerce', '12:00:00', '14:00:00', 'Monday', 'DCIT'),
+('INFO3435', 'E-Commerce', '14:00:00', '16:00:00', 'Wednesday', 'DCIT'),
+('INFO3490', 'Project', '08:00:00', '10:00:00', 'Wednesday', 'DCIT'),
+('INFO3510', 'Networking for Professionals', '08:00:00', '10:00:00', 'Saturday', 'DCIT'),
+('INFO3510', 'Networking for Professionals', '10:00:00', '12:00:00', 'Saturday', 'DCIT'),
+('INFO3510', 'Networking for Professionals', '16:00:00', '17:00:00', 'Tuesday', 'DCIT');
+
 -- --------------------------------------------------------
 
 --
@@ -74,7 +98,8 @@ CREATE TABLE `department` (
 -- Dumping data for table `department`
 --
 
-INSERT INTO `department` (`departmentId`, `departmentName`) VALUES('DCIT', 'Department of Computing and Information Technology');
+INSERT INTO `department` (`departmentId`, `departmentName`) VALUES
+('DCIT', 'Department of Computing and Information Technology');
 
 -- --------------------------------------------------------
 
@@ -92,7 +117,8 @@ CREATE TABLE `faculty` (
 -- Dumping data for table `faculty`
 --
 
-INSERT INTO `faculty` (`facultyId`, `facultyName`) VALUES('FST', 'Faculty of Science and Technology');
+INSERT INTO `faculty` (`facultyId`, `facultyName`) VALUES
+('FST', 'Faculty of Science and Technology');
 
 -- --------------------------------------------------------
 
@@ -105,6 +131,13 @@ CREATE TABLE `faculty_department` (
   `facultyId` varchar(20) NOT NULL,
   `departmentId` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `faculty_department`
+--
+
+INSERT INTO `faculty_department` (`facultyId`, `departmentId`) VALUES
+('FST', 'DCIT');
 
 -- --------------------------------------------------------
 
@@ -124,11 +157,12 @@ CREATE TABLE `room` (
 -- Dumping data for table `room`
 --
 
-INSERT INTO `room` (`roomId`, `roomName`, `floor`, `buildingId`) VALUES('113', 'FST', 'G', 100);
-INSERT INTO `room` (`roomId`, `roomName`, `floor`, `buildingId`) VALUES('114', 'FST', 'G', 100);
-INSERT INTO `room` (`roomId`, `roomName`, `floor`, `buildingId`) VALUES('412', 'FST', '3', 100);
-INSERT INTO `room` (`roomId`, `roomName`, `floor`, `buildingId`) VALUES('CSL1', 'FST ', '2', 100);
-INSERT INTO `room` (`roomId`, `roomName`, `floor`, `buildingId`) VALUES('CSL2', 'FST', '2', 100);
+INSERT INTO `room` (`roomId`, `roomName`, `floor`, `buildingId`) VALUES
+('113', 'FST', 'G', 100),
+('114', 'FST', 'G', 100),
+('412', 'FST', '3', 100),
+('CSL1', 'FST ', '2', 100),
+('CSL2', 'FST', '2', 100);
 
 -- --------------------------------------------------------
 
@@ -142,6 +176,23 @@ CREATE TABLE `room_course` (
   `courseCode` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data for table `room_course`
+--
+
+INSERT INTO `room_course` (`roomId`, `courseCode`) VALUES
+('113', 'INFO2400'),
+('113', 'INFO2405'),
+('114', 'INFO2410'),
+('412', 'INFO2410'),
+('412', 'INFO3510'),
+('CSL1', 'INFO1601'),
+('CSL1', 'INFO2500'),
+('CSL1', 'INFO3410'),
+('CSL1', 'INFO3435'),
+('CSL1', 'INFO3510'),
+('CSL2', 'INFO1601');
+
 -- --------------------------------------------------------
 
 --
@@ -154,6 +205,7 @@ CREATE TABLE `user` (
   `fname` text NOT NULL,
   `lname` text NOT NULL,
   `password` varchar(50) NOT NULL,
+  `email` varchar(50) NOT NULL,
   `departmentId` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -161,7 +213,8 @@ CREATE TABLE `user` (
 -- Dumping data for table `user`
 --
 
-INSERT INTO `user` (`userId`, `fname`, `lname`, `password`, `departmentId`) VALUES(2000, 'Jensen', 'Ackles', 'd033e22ae348aeb5660fc2140aec35850c4da997', 'DCIT');
+INSERT INTO `user` (`userId`, `fname`, `lname`, `password`, `email`, `departmentId`) VALUES
+(2000, 'Jensen', 'Ackles', 'd033e22ae348aeb5660fc2140aec35850c4da997', 'jackles@gmail.com', 'DCIT');
 
 -- --------------------------------------------------------
 
