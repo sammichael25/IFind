@@ -27,18 +27,22 @@ function saveUser($fname, $lname, $deptId, $email, $password){
 }
 
 function login_check($email, $password){
-	$password = sha1($password);
-	$sql = "SELECT email, password 
-            FROM user
-			WHERE $email=email
-			AND $password=password";
-	$db = getDBConnection();
-	if ($db != NULL){
-		$res=$db->query($sql);	
-		$row = mysqli_fetch_assoc($res);	
-		if (($row["email"]==$email) && ($row["password"]==$password)){
-			
-		}
+	$sql = "SELECT `email`, `password` 
+            FROM `user`
+			WHERE '$email'=`email`
+			AND '$password'=`password`
+			";
+
+	$db = new mysqli("localhost","root","","ifinddb");
+	$result=mysqli_query($db,$sql) or die(mysqli_error($db));
+	if(mysqli_num_rows($result) == 1 ){
+		 header('Location: http://localhost/IFind/timetable.html');
+		 exit;
+	}
+	else{
+		 header('Location: http://localhost/IFind/login.php');
+	}
+
 }
 
 ?>

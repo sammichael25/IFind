@@ -49,7 +49,7 @@
 			<div class="signup-header2 wow fadeInUp">
 				<h3 class="form-title text-center">Login</h3>
                 <!-- /.signin form begins-->
-				<form class="form-header" action="#" role="form" method="POST" id="#"> 
+				<form class="form-header" action="login_check.php" role="form" method="POST" id="#"> 
 					<input type="hidden" name="u" value="503bdae81fde8612ff4944435">
 					<input type="hidden" name="id" value="bfdba52708">
 					<div class="form-group">
