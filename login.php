@@ -44,24 +44,26 @@
             </form>
            </div>
        </div>
-       <vr></vr>
+       <vr></vr> 
 		<div class="col-md-3 col-md-offset-7" id="signup-hd2">
 			<div class="signup-header2 wow fadeInUp">
 				<h3 class="form-title text-center">Login</h3>
-				<form class="form-header" action="#" role="form" method="POST" id="#">
+                <!-- /.signin form begins-->
+				<form class="form-header" action="#" role="form" method="POST" id="#"> 
 					<input type="hidden" name="u" value="503bdae81fde8612ff4944435">
 					<input type="hidden" name="id" value="bfdba52708">
 					<div class="form-group">
-						<input class="form-control input-lg" name="MERGE1" id="email" type="email" placeholder="Email address" required>
+						<input class="form-control input-lg" name="email" id="email" type="email" placeholder="Email address" required>
 					</div>
 					<div class="form-group">
-						<input class="form-control input-lg" name="MERGE0" id="password" type="password" placeholder="Password" required>
+						<input class="form-control input-lg" name="password" id="password" type="password" placeholder="Password" required>
 					</div>
 					<div class="form-group last">
 						<input type="submit" id="loginBtn" class="btn btn-primary btn-block btn-lg" value="Login">
 					</div>
 					<p class="privacy text-center"> <a href="#">Forgot your password?</a>.</p>
 				</form>
+                <!-- /.signin form ends-->
 			</div>				
 		</div>
         </div>
