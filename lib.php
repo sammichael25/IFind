@@ -35,8 +35,9 @@ function login_check($email, $password){
 
 	$db = new mysqli("localhost","root","","ifinddb");
 	$result=mysqli_query($db,$sql) or die(mysqli_error($db));
-	if(mysqli_num_rows($result) == 1 ){
-		 header('Location: http://localhost/IFind/timetable.html');
+	if(mysqli_num_rows($result) == 1 ){//condition for timetable to be generated for the user
+		 genarateTimetable($email,$password);
+		 header('Location: http://localhost/IFind/timetable.html'); //this page should lost last; until the timetable is filled
 		 exit;
 	}
 	else{
