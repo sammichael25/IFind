@@ -104,18 +104,24 @@ $courses = array(
        $course=new Course(); //creating course object
        $course->courseCode =$row["courseCode"];
        $course->courseName =$row["courseName"];
-       $course->sTime = (string)$row["sTime"];
-       $course->fTime =(string)$row["fTime"];
+       $course->sTime = $row["sTime"];
+       $course->fTime =$row["fTime"];
        $course->day =$row["day"];
        $course->roomId =$row["roomId"];
 
-	   $courses[(string)$course->sTime][(string)$course->day]=$course;
+	   $courses[$course->sTime][$course->day]=$course;
+       if ($course->fTime - $course->sTime === 2){
+           $courses[$course->fTime][$course->day]=$course;
+       }
 	}
 	//echo $courses['09:00:00']['Monday']->courseCode;
-	echo "<table class='table table-hover' id='dev-table'>";
+    $time_intervals=['8am-9am','9am-10am','10am-11am','11am-12pm','12pm-1pm'];//index array by default
+	$i=0;
+    echo "<table class='table table-hover' id='dev-table'>";
+    echo "<thead><tr><th>&nbsp;</th><th>Monday</th><th>Tuesday</th><th>Wednesday</th><th>Thursday</th><th>Friday</th></thead></tr>";
 	foreach($courses as $list => $times)
 	{
-		echo "<tr>";
+		echo "<tr><td>".$time_intervals[$i++]."</td>";
     foreach($times as $days => $value){
 		//echo $value->courseCode;
 		echo "<td>".$value->courseCode."</td>";
