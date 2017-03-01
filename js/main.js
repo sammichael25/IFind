@@ -107,3 +107,12 @@ function createTable(records){
     htmlStr += "</tbody></table>";
     $(sec_id).html(htmlStr);
 }
+//-----------------------------------------
+//show and hide branch form
+function AddCourseForm(){
+	$('#addCourseForm').show("slow");
+}
+
+function hideCourseForm(){
+	$('#addCourseForm').hide("slow");
+}

@@ -66,27 +66,7 @@
         </div>
     </header>
 	
-	<!-- Adding user courses -->
-	<div class ="row" style="display:none" id="addCourseForm">
-		<form name="courseForm" enctype="multipart/form-data" class="form-header" method="POST" action="templates/timetable.phtml">
-			<fieldset>
-			<legend style="text-align:center">Add Course</legend>
-			<label class="form-group" for="courseCode">Course Code</label> 
-			<div class="form-group">
-				<select class="form-control input-lg" name="courseCode" id="courseCode">
-					<option value="0">Choose Course Code</option>
-				</select>
-			</div>
-			<label class="form-group" for="courseName">Course Name</label> 
-			<div class="form-group">
-				<input class="form-control input-lg" name="courseName" id="CourseName" type="text" placeholder="" required="">
-			</div>
-			<div class="form-group last">
-				<button type="submit" id="loginBtn" class="btn btn-primary btn-block btn-lg" value="Login">Sign in</button>
-			</div>
-			</fieldset>
-		</form>
-	</div>
+	
 				
 	<!-- Log in -->
 	<div class="container" >
@@ -95,9 +75,41 @@
                 <h2>Welcome Student</h2>
                 <br>
 				
+				<!-- Adding user courses -->
+	<div class ="row" style="display:none" id="addCourseForm">
+		<div class ="col-md-6">
+		<form name="courseForm" enctype="multipart/form-data" class="form-horizontal" method="POST" action="templates/timetable.phtml">
+			<fieldset>
+			<legend style="text-align:center">Add Course</legend>
+			<div class="form-group">
+			<label class="col-md-4 control-label" for="courseCode">Course Code</label> 
+				<div class="col-md-6">
+				<select class="form-control" name="courseCode" id="courseCode">
+					<option value="0">Choose Course Code</option>
+				</select>
+				</div>
+			</div>
+			<div class="form-group">
+			<label class="col-md-4 control-label" for="courseName">Course Name</label> 
+			<div class="col-md-6">
+				<input class="form-control input-lg" name="courseName" id="CourseName" type="text" placeholder="" required="">
+			</div>
+			</div>
+			<div class="form-group">
+			<label class="col-md-4 control-label" for="Add"></label>
+			<div class="col-md-4">
+				<button type="submit" id="addBtn" class="btn btn-info" value="Login">Add</button>
+				<button type="submit" onclick ="hideCourseForm();" class="btn btn-info">Cancel</button>
+			</div>
+			</div>
+			</fieldset>
+		</form>
+	</div>
+	</div>
+				
 				<div class ="row">
 					<div class ="form-group">
-						<button type="button" onclick ="showForm();" class="btn btn-info">Add Courses</button>
+						<button type="button" onclick ="AddCourseForm();" class="btn btn-info">Add Courses</button>
 					</div>
 				</div>
 				
@@ -136,17 +148,17 @@
 		
 	</div>	
 	
-<script src="js/main.js"></script>
+<script src="../js/main.js"></script>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>		
 <script src="bower_components/jquery/dist/jquery.js"></script>	
-<script src="bower_components/angular/angular.min.js"></script>
-<script src="bower_components/angular-route/angular-route.min.js"></script>
+<script src="../bower_components/angular/angular.min.js"></script>
+<script src="../bower_components/angular-route/angular-route.min.js"></script>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.js"></script>
 <!-- Bootstrap Core JavaScript -->
 <script src="js/bootstrap.min.js"></script>
-<script src="js/ie10-viewport-bug-workaround.js"></script>	
+<script src="../js/ie10-viewport-bug-workaround.js"></script>	
 
 </body>
 
