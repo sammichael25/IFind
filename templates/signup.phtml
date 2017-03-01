@@ -1,0 +1,122 @@
+<!doctype html>
+
+<head>
+
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+<meta name="description" content="">
+<meta name="author" content="">
+
+<title>Registration</title>
+
+<!-- Bootstrap Core CSS -->
+<link href="css/bootstrap.min.css" rel="stylesheet">
+
+<!-- Custom CSS -->
+<link href="../css/logo-nav.css" rel="stylesheet">
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.css" rel="stylesheet">	
+
+<script src="../bower_components/angular/angular.min.js"></script>
+<script src="../bower_components/angular-route/angular-route.min.js"></script>
+<script src="../js/passScript.js"></script>
+</head>
+
+<body ng-app="validationApp" ng-controller="mainController">
+
+<form name="userForm" class="form-horizontal" method = "POST" action = "login.php" onsubmit="return register();" ng-submit="submitForm(userForm.$valid)" novalidate>
+<fieldset>
+
+<!-- Form Name -->
+<legend style="text-align: center">IFind Registration</legend>
+
+<!-- Text input-->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="fname">First Name <span style="color:red">*</span></label>  
+  <div class="col-md-4">
+  <input id="fname" name="fname" type="text" placeholder="Jane" class="form-control input-md" ng-model="user.fname" type="text" placeholder="" class="form-control input-md" required="">  
+  </div>
+</div>
+
+<!-- Text input-->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="lname">Last Name <span style="color:red">*</span></label>  
+  <div class="col-md-4">
+  <input id="lname" name="lname" type="text" placeholder="Doe" class="form-control input-md" ng-model="user.lname" type="text" placeholder="" class="form-control input-md" required="">
+  </div>
+</div>
+
+<!-- Text input-->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="departmentId">Department <span style="color:red">*</span></label>  
+  <div class="col-md-4">
+  <input id="departmentId" name="departmentId" type="text" placeholder="" class="form-control input-md" ng-model-options="{ updateOn: 'blur' }" ng-model="user.departmentId" ng-minlength="1" ng-maxlength="8" required="">
+  <p ng-show="userForm.department.$error.minlength" class="help-block">Fix please</p>
+  <p ng-show="userForm.department.$error.maxlength" class="help-block">Fix please</p>
+  </div>
+</div>
+
+<!-- Text input-->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="email">Email <span style="color:red">*</span> </label>  
+  <div class="col-md-4">
+  <input id="email" name="email" placeholder="janedoe@domain.com" class="form-control input-md" ng-model-options="{ updateOn: 'blur' }" ng-model="user.email" type="email" placeholder="johnDoe@example.com" class="form-control input-md" required="">
+  <p ng-show="userForm.email.$error.email" class="help-block" >Invalid Email Address</p>    
+  </div>
+</div>
+
+<!-- Password input-->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="password">Password <span style="color:red">*</span> </label>
+  <div class="col-md-4">
+    <input id="password" name="password" type="password" placeholder="" class="form-control input-md" data-ng-model="user.password" ng-minlength="8" ng-maxlength="25" required="">
+    <p ng-show="userForm.password.$error.minlength" class="help-block">Password is too short.</p>
+  <p ng-show="userForm.password.$error.maxlength" class="help-block">Password is too long.</p>
+  </div>
+</div>
+
+<!-- Password input-->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="password2">Confirm Password <span style="color:red">*</span> </label>
+  <div class="col-md-4">
+    <input id="password2" name="password2" type="password" placeholder="" class="form-control input-md" ng-model-options="{ updateOn: 'blur' }" ng-model="user.password2" required data-password-verify="user.password" required="">
+  <p ng-show="userForm.password2.$error.passwordVerify" class="help-block">Passwords do not match </p>
+    
+  </div>
+</div>
+
+<!-- Button -->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="Submit"></label>
+  <div class="col-md-4">
+    <button id="saveBnt" name="saveBnt" class="btn btn-primary btn-block" type ="submit" ng-disabled="userForm.$invalid">Submit</button>
+  </div>
+</div>
+
+</fieldset>
+</form>
+  </div>
+    </div>
+</div>
+<!--footer -->
+  <div class="footer">
+    <p> &copy; IFind 2017 </p>
+  </div>
+  
+<script src="../js/main.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>		
+<script src="../bower_components/jquery/dist/jquery.js"></script>	
+<script src="../bower_components/angular/angular.min.js"></script>
+<script src="../bower_components/angular-route/angular-route.min.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.js"></script>
+<!-- Bootstrap Core JavaScript -->
+<script src="js/bootstrap.min.js"></script>
+<script src="../js/ie10-viewport-bug-workaround.js"></script>	
+
+</body>
+</html>

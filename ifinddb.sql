@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 22, 2017 at 12:49 PM
+-- Generation Time: Feb 26, 2017 at 10:36 PM
 -- Server version: 10.1.19-MariaDB
 -- PHP Version: 7.0.13
 
@@ -31,7 +31,7 @@ USE `ifinddb`;
 DROP TABLE IF EXISTS `building`;
 CREATE TABLE `building` (
   `buildingId` int(20) NOT NULL,
-  `buildingName` text NOT NULL,
+  `buildingName` varchar(50) NOT NULL,
   `GPS` int(50) NOT NULL,
   `facultyId` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -40,7 +40,7 @@ CREATE TABLE `building` (
 -- Dumping data for table `building`
 --
 
-INSERT INTO `building` (`buildingId`, `buildingName`, `GPS`, `facultyId`) VALUES(100, 'Faculty of Science and Technology Building', 0, 'FST');
+INSERT INTO `building` (`buildingId`, `buildingName`, `GPS`, `facultyId`) VALUES(100, 'Natural Sciences Building', 0, 'FST');
 
 -- --------------------------------------------------------
 
@@ -51,12 +51,23 @@ INSERT INTO `building` (`buildingId`, `buildingName`, `GPS`, `facultyId`) VALUES
 DROP TABLE IF EXISTS `course`;
 CREATE TABLE `course` (
   `courseCode` varchar(20) NOT NULL,
-  `courseName` text NOT NULL,
+  `courseName` varchar(50) NOT NULL,
   `sTime` time NOT NULL,
   `fTime` time NOT NULL,
   `day` varchar(20) NOT NULL,
+  `roomId` varchar(20) NOT NULL,
   `departmentId` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `course`
+--
+
+INSERT INTO `course` (`courseCode`, `courseName`, `sTime`, `fTime`, `day`, `roomId`, `departmentId`) VALUES('INFO 3410', 'Web Systems & Technologies', '02:00:00', '04:00:00', 'Wednesday', 'CSL2', 'DCIT');
+INSERT INTO `course` (`courseCode`, `courseName`, `sTime`, `fTime`, `day`, `roomId`, `departmentId`) VALUES('INFO 3425', 'Professional Ethics and Law', '10:00:00', '12:00:00', 'Friday', 'CSL2', 'DCIT');
+INSERT INTO `course` (`courseCode`, `courseName`, `sTime`, `fTime`, `day`, `roomId`, `departmentId`) VALUES('INFO 3425', 'Professional Ethics and Law', '11:00:00', '12:00:00', 'Monday', '113', 'DCIT');
+INSERT INTO `course` (`courseCode`, `courseName`, `sTime`, `fTime`, `day`, `roomId`, `departmentId`) VALUES('INFO 3425', 'Professional Ethics and Law', '11:00:00', '12:00:00', 'Tuesday', '114', 'DCIT');
+INSERT INTO `course` (`courseCode`, `courseName`, `sTime`, `fTime`, `day`, `roomId`, `departmentId`) VALUES('INFO 3490', 'Project', '08:00:00', '09:00:00', 'Monday', '412', 'DCIT');
 
 -- --------------------------------------------------------
 
@@ -67,7 +78,7 @@ CREATE TABLE `course` (
 DROP TABLE IF EXISTS `department`;
 CREATE TABLE `department` (
   `departmentId` varchar(20) NOT NULL,
-  `departmentName` text NOT NULL
+  `departmentName` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -85,7 +96,7 @@ INSERT INTO `department` (`departmentId`, `departmentName`) VALUES('DCIT', 'Depa
 DROP TABLE IF EXISTS `faculty`;
 CREATE TABLE `faculty` (
   `facultyId` varchar(20) NOT NULL,
-  `facultyName` text NOT NULL
+  `facultyName` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -106,6 +117,12 @@ CREATE TABLE `faculty_department` (
   `departmentId` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data for table `faculty_department`
+--
+
+INSERT INTO `faculty_department` (`facultyId`, `departmentId`) VALUES('FST', 'DCIT');
+
 -- --------------------------------------------------------
 
 --
@@ -115,7 +132,6 @@ CREATE TABLE `faculty_department` (
 DROP TABLE IF EXISTS `room`;
 CREATE TABLE `room` (
   `roomId` varchar(20) NOT NULL,
-  `roomName` text NOT NULL,
   `floor` varchar(10) NOT NULL,
   `buildingId` int(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -124,23 +140,11 @@ CREATE TABLE `room` (
 -- Dumping data for table `room`
 --
 
-INSERT INTO `room` (`roomId`, `roomName`, `floor`, `buildingId`) VALUES('113', 'FST', 'G', 100);
-INSERT INTO `room` (`roomId`, `roomName`, `floor`, `buildingId`) VALUES('114', 'FST', 'G', 100);
-INSERT INTO `room` (`roomId`, `roomName`, `floor`, `buildingId`) VALUES('412', 'FST', '3', 100);
-INSERT INTO `room` (`roomId`, `roomName`, `floor`, `buildingId`) VALUES('CSL1', 'FST ', '2', 100);
-INSERT INTO `room` (`roomId`, `roomName`, `floor`, `buildingId`) VALUES('CSL2', 'FST', '2', 100);
-
--- --------------------------------------------------------
-
---
--- Table structure for table `room_course`
---
-
-DROP TABLE IF EXISTS `room_course`;
-CREATE TABLE `room_course` (
-  `roomId` varchar(20) NOT NULL,
-  `courseCode` varchar(20) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+INSERT INTO `room` (`roomId`, `floor`, `buildingId`) VALUES('113', 'G', 100);
+INSERT INTO `room` (`roomId`, `floor`, `buildingId`) VALUES('114', 'G', 100);
+INSERT INTO `room` (`roomId`, `floor`, `buildingId`) VALUES('412', '3', 100);
+INSERT INTO `room` (`roomId`, `floor`, `buildingId`) VALUES('CSL1', '2', 100);
+INSERT INTO `room` (`roomId`, `floor`, `buildingId`) VALUES('CSL2', '2', 100);
 
 -- --------------------------------------------------------
 
@@ -162,7 +166,8 @@ CREATE TABLE `user` (
 -- Dumping data for table `user`
 --
 
-INSERT INTO `user` (`userId`, `fname`, `lname`, `email`, `password`, `departmentId`) VALUES(1, 'Michael', 'Sam', 'sam@mail.com', '5baa61e4c9b93f3f0682250b6cf8331b7ee68fd8', 'DCIT');
+INSERT INTO `user` (`userId`, `fname`, `lname`, `email`, `password`, `departmentId`) VALUES(1, 'Safraz', 'Doolan', 'safraz@gmail.com', 'c80f5bc166cd6739ba9ba6d94acabc0aa01494da', 'DCIT');
+INSERT INTO `user` (`userId`, `fname`, `lname`, `email`, `password`, `departmentId`) VALUES(2, 'Michael', 'Sam', 'sam@gmail.com', '47b8015d98d5103a8a6981a979514855cac10ebc', 'DCIT');
 
 -- --------------------------------------------------------
 
@@ -175,6 +180,14 @@ CREATE TABLE `user_course` (
   `userId` int(20) NOT NULL,
   `courseCode` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `user_course`
+--
+
+INSERT INTO `user_course` (`userId`, `courseCode`) VALUES(1, 'INFO 3425');
+INSERT INTO `user_course` (`userId`, `courseCode`) VALUES(1, 'INFO 3490');
+INSERT INTO `user_course` (`userId`, `courseCode`) VALUES(2, 'INFO 3410');
 
 --
 -- Indexes for dumped tables
@@ -192,7 +205,8 @@ ALTER TABLE `building`
 --
 ALTER TABLE `course`
   ADD PRIMARY KEY (`courseCode`,`sTime`,`day`),
-  ADD KEY `departmentId` (`departmentId`);
+  ADD KEY `departmentId` (`departmentId`),
+  ADD KEY `roomId` (`roomId`);
 
 --
 -- Indexes for table `department`
@@ -222,14 +236,6 @@ ALTER TABLE `room`
   ADD KEY `buildingId` (`buildingId`);
 
 --
--- Indexes for table `room_course`
---
-ALTER TABLE `room_course`
-  ADD PRIMARY KEY (`roomId`,`courseCode`),
-  ADD KEY `roomId` (`roomId`),
-  ADD KEY `courseCode` (`courseCode`);
-
---
 -- Indexes for table `user`
 --
 ALTER TABLE `user`
@@ -252,12 +258,12 @@ ALTER TABLE `user_course`
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `userId` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5002;
+  MODIFY `userId` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5004;
 --
 -- AUTO_INCREMENT for table `user_course`
 --
 ALTER TABLE `user_course`
-  MODIFY `userId` int(20) NOT NULL AUTO_INCREMENT;
+  MODIFY `userId` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- Constraints for dumped tables
 --
@@ -272,7 +278,8 @@ ALTER TABLE `building`
 -- Constraints for table `course`
 --
 ALTER TABLE `course`
-  ADD CONSTRAINT `course_ibfk_1` FOREIGN KEY (`departmentId`) REFERENCES `department` (`departmentId`);
+  ADD CONSTRAINT `course_ibfk_1` FOREIGN KEY (`roomId`) REFERENCES `room` (`roomId`),
+  ADD CONSTRAINT `departmentId_fk` FOREIGN KEY (`departmentId`) REFERENCES `department` (`departmentId`);
 
 --
 -- Constraints for table `faculty_department`
@@ -286,13 +293,6 @@ ALTER TABLE `faculty_department`
 --
 ALTER TABLE `room`
   ADD CONSTRAINT `room_ibfk_1` FOREIGN KEY (`buildingId`) REFERENCES `building` (`buildingId`);
-
---
--- Constraints for table `room_course`
---
-ALTER TABLE `room_course`
-  ADD CONSTRAINT `room_course_ibfk_1` FOREIGN KEY (`roomId`) REFERENCES `room` (`roomId`),
-  ADD CONSTRAINT `room_course_ibfk_2` FOREIGN KEY (`courseCode`) REFERENCES `course` (`courseCode`);
 
 --
 -- Constraints for table `user`

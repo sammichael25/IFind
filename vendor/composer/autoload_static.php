@@ -4,7 +4,7 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInit5d64cd56dba3b219e6f664aa286a122e
+class ComposerStaticInitd6a379e43fedfacefb1314ae1f5c688d
 {
     public static $files = array (
         '253c157292f75eb38082b5acb06f3f01' => __DIR__ . '/..' . '/nikic/fast-route/src/functions.php',
@@ -18,12 +18,7 @@ class ComposerStaticInit5d64cd56dba3b219e6f664aa286a122e
         ),
         'P' => 
         array (
-            'Psr\\Log\\' => 8,
             'Psr\\Http\\Message\\' => 17,
-        ),
-        'M' => 
-        array (
-            'Monolog\\' => 8,
         ),
         'I' => 
         array (
@@ -39,22 +34,15 @@ class ComposerStaticInit5d64cd56dba3b219e6f664aa286a122e
         'Slim\\Views\\' => 
         array (
             0 => __DIR__ . '/..' . '/slim/php-view/src',
+            1 => __DIR__ . '/..' . '/slim/twig-view/src',
         ),
         'Slim\\' => 
         array (
             0 => __DIR__ . '/..' . '/slim/slim/Slim',
         ),
-        'Psr\\Log\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/psr/log/Psr/Log',
-        ),
         'Psr\\Http\\Message\\' => 
         array (
             0 => __DIR__ . '/..' . '/psr/http-message/src',
-        ),
-        'Monolog\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/monolog/monolog/src/Monolog',
         ),
         'Interop\\Container\\' => 
         array (
@@ -67,6 +55,13 @@ class ComposerStaticInit5d64cd56dba3b219e6f664aa286a122e
     );
 
     public static $prefixesPsr0 = array (
+        'T' => 
+        array (
+            'Twig_' => 
+            array (
+                0 => __DIR__ . '/..' . '/twig/twig/lib',
+            ),
+        ),
         'P' => 
         array (
             'Pimple' => 
@@ -79,9 +74,9 @@ class ComposerStaticInit5d64cd56dba3b219e6f664aa286a122e
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixLengthsPsr4 = ComposerStaticInit5d64cd56dba3b219e6f664aa286a122e::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticInit5d64cd56dba3b219e6f664aa286a122e::$prefixDirsPsr4;
-            $loader->prefixesPsr0 = ComposerStaticInit5d64cd56dba3b219e6f664aa286a122e::$prefixesPsr0;
+            $loader->prefixLengthsPsr4 = ComposerStaticInitd6a379e43fedfacefb1314ae1f5c688d::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInitd6a379e43fedfacefb1314ae1f5c688d::$prefixDirsPsr4;
+            $loader->prefixesPsr0 = ComposerStaticInitd6a379e43fedfacefb1314ae1f5c688d::$prefixesPsr0;
 
         }, null, ClassLoader::class);
     }

@@ -1,6 +1,6 @@
 <?php
 /**
- * Slim Framework (https://slimframework.com)
+ * Slim Framework (http://slimframework.com)
  *
  * @link      https://github.com/codeguy/Slim
  * @copyright Copyright (c) 2011-2016 Josh Lockhart

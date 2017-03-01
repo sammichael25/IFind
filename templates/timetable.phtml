@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Timetable</title>
+
+<!-- Bootstrap Core CSS -->
+<link href="../css/bootstrap.min.css" rel="stylesheet">
+
+<!-- Custom CSS -->
+<link href="../css/logo-nav.css" rel="stylesheet">
+	
+<link href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.css" rel="stylesheet">	
+</head>
+
+<body>
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+        <div class="container">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="timetable.html">
+                    <img src="../images/logo.png" id="logo" alt="">
+                </a>
+            </div>
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav">
+                    <li>
+                        <a href="#">About</a>
+                    </li>
+                    <li>
+                        <a href="#">Search Classroom</a>
+                    </li>
+                    <li>
+                        <a href="index.php">Logout</a>
+                    </li>
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container -->
+    </nav>
+
+    <!-- business-header -->
+    <header class="business-header">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                </div>
+            </div>
+        </div>
+    </header>
+	
+	<!-- Adding user courses -->
+	<div class ="row" style="display:none" id="addCourseForm">
+		<form name="courseForm" enctype="multipart/form-data" class="form-header" method="POST" action="templates/timetable.phtml">
+			<fieldset>
+			<legend style="text-align:center">Add Course</legend>
+			<label class="form-group" for="courseCode">Course Code</label> 
+			<div class="form-group">
+				<select class="form-control input-lg" name="courseCode" id="courseCode">
+					<option value="0">Choose Course Code</option>
+				</select>
+			</div>
+			<label class="form-group" for="courseName">Course Name</label> 
+			<div class="form-group">
+				<input class="form-control input-lg" name="courseName" id="CourseName" type="text" placeholder="" required="">
+			</div>
+			<div class="form-group last">
+				<button type="submit" id="loginBtn" class="btn btn-primary btn-block btn-lg" value="Login">Sign in</button>
+			</div>
+			</fieldset>
+		</form>
+	</div>
+				
+	<!-- Log in -->
+	<div class="container" >
+		<div class="row">   
+            <div class="col-md-12">
+                <h2>Welcome Student</h2>
+                <br>
+				
+				<div class ="row">
+					<div class ="form-group">
+						<button type="button" onclick ="showForm();" class="btn btn-info">Add Courses</button>
+					</div>
+				</div>
+				
+				<div class="panel panel-primary">
+					<div class="panel-heading">
+						<h3 class="panel-title">Personal Timetable</h3>
+						<div id="table_sect"></div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+			<script type="text/template" id="table_headingt">
+					<table class="table table-hover table-condensed" >
+						<thead>
+							<tr>
+								<th>Time</th><th>Monday</th><th>Tuesday</th><th>Wednesday</th><th>Thursday</th> <th>Friday</th><th>Saturday</th>
+							</tr>
+						</thead>
+						<tbody>
+			</script>
+	
+    <!-- /.container -->
+	<div class="container">
+		<hr>
+        <!-- Footer -->
+        <footer id="indexfooter">
+            <div class="row">
+                <div class="col-lg-12">
+                    <p>Copyright &copy; Your Website 2017</p>
+                </div>
+            </div>
+            <!-- /.row -->
+        </footer>
+		
+	</div>	
+	
+<script src="js/main.js"></script>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>		
+<script src="bower_components/jquery/dist/jquery.js"></script>	
+<script src="bower_components/angular/angular.min.js"></script>
+<script src="bower_components/angular-route/angular-route.min.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.js"></script>
+<!-- Bootstrap Core JavaScript -->
+<script src="js/bootstrap.min.js"></script>
+<script src="js/ie10-viewport-bug-workaround.js"></script>	
+
+</body>
+
+</html>

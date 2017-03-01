@@ -1,6 +1,6 @@
 <?php
 /**
- * Slim Framework (https://slimframework.com)
+ * Slim Framework (http://slimframework.com)
  *
  * @link      https://github.com/slimphp/Slim
  * @copyright Copyright (c) 2011-2016 Josh Lockhart
@@ -248,9 +248,12 @@ class Request extends Message implements ServerRequestInterface
             if ($customMethod) {
                 $this->method = $this->filterMethod($customMethod);
             } elseif ($this->originalMethod === 'POST') {
-                $overrideMethod = $this->filterMethod($this->getParsedBodyParam('_METHOD'));
-                if ($overrideMethod !== null) {
-                    $this->method = $overrideMethod;
+                $body = $this->getParsedBody();
+
+                if (is_object($body) && property_exists($body, '_METHOD')) {
+                    $this->method = $this->filterMethod((string)$body->_METHOD);
+                } elseif (is_array($body) && isset($body['_METHOD'])) {
+                    $this->method = $this->filterMethod((string)$body['_METHOD']);
                 }
 
                 if ($this->getBody()->eof()) {
@@ -686,7 +689,7 @@ class Request extends Message implements ServerRequestInterface
      *
      * Note: This method is not part of the PSR-7 standard.
      *
-     * @param string $key     The attribute name.
+     * @param string $name    The attribute name.
      * @param mixed  $default Default value to return if the attribute does not exist.
      *
      * @return mixed
@@ -844,22 +847,6 @@ class Request extends Message implements ServerRequestInterface
     public function getServerParams()
     {
         return $this->serverParams;
-    }
-
-    /**
-     * Retrieve a server parameter.
-     *
-     * Note: This method is not part of the PSR-7 standard.
-     *
-     * @param  string $key
-     * @param  mixed  $default
-     * @return mixed
-     */
-    public function getServerParam($key, $default = null)
-    {
-        $serverParams = $this->getServerParams();
-
-        return isset($serverParams[$key]) ? $serverParams[$key] : $default;
     }
 
     /*******************************************************************************
@@ -1131,10 +1118,10 @@ class Request extends Message implements ServerRequestInterface
      *
      * Note: This method is not part of the PSR-7 standard.
      *
-     * @param string $key
-     * @param mixed $default
+     * @param      $key
+     * @param null $default
      *
-     * @return mixed
+     * @return null
      */
     public function getParsedBodyParam($key, $default = null)
     {
@@ -1154,10 +1141,10 @@ class Request extends Message implements ServerRequestInterface
      *
      * Note: This method is not part of the PSR-7 standard.
      *
-     * @param string $key
-     * @param mixed $default
+     * @param      $key
+     * @param null $default
      *
-     * @return mixed
+     * @return null
      */
     public function getQueryParam($key, $default = null)
     {

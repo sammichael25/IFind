@@ -1,6 +1,6 @@
 <?php
 /**
- * Slim Framework (https://slimframework.com)
+ * Slim Framework (http://slimframework.com)
  *
  * @link      https://github.com/slimphp/Slim
  * @copyright Copyright (c) 2011-2016 Josh Lockhart
@@ -9,7 +9,6 @@
 namespace Slim;
 
 use FastRoute\Dispatcher;
-use Interop\Container\ContainerInterface;
 use InvalidArgumentException;
 use RuntimeException;
 use Psr\Http\Message\ServerRequestInterface;
@@ -30,13 +29,6 @@ use Slim\Interfaces\RouteInterface;
  */
 class Router implements RouterInterface
 {
-    /**
-     * Container Interface
-     *
-     * @var ContainerInterface
-     */
-    protected $container;
-
     /**
      * Parser
      *
@@ -135,14 +127,6 @@ class Router implements RouterInterface
     }
 
     /**
-     * @param ContainerInterface $container
-     */
-    public function setContainer(ContainerInterface $container)
-    {
-        $this->container = $container;
-    }
-
-    /**
      * Add route
      *
      * @param  string[] $methods Array of HTTP methods
@@ -201,16 +185,11 @@ class Router implements RouterInterface
      * @param  string   $pattern The route pattern
      * @param  callable $handler The route callable
      *
-     * @return \Slim\Interfaces\RouteInterface
+     * @return Slim\Interfaces\RouteInterface
      */
     protected function createRoute($methods, $pattern, $callable)
     {
-        $route = new Route($methods, $pattern, $callable, $this->routeGroups, $this->routeCounter);
-        if (!empty($this->container)) {
-            $route->setContainer($this->container);
-        }
-
-        return $route;
+        return new Route($methods, $pattern, $callable, $this->routeGroups, $this->routeCounter);
     }
 
     /**

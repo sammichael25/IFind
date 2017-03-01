@@ -1,6 +1,6 @@
 <?php
 /**
- * Slim Framework (https://slimframework.com)
+ * Slim Framework (http://slimframework.com)
  *
  * @link      https://github.com/slimphp/Slim
  * @copyright Copyright (c) 2011-2016 Josh Lockhart
@@ -36,6 +36,11 @@ use Slim\Interfaces\RouterInterface;
  * configure, and run a Slim Framework application.
  * The \Slim\App class also accepts Slim Framework middleware.
  *
+ * @property-read array $settings App settings
+ * @property-read EnvironmentInterface $environment
+ * @property-read RequestInterface $request
+ * @property-read ResponseInterface $response
+ * @property-read RouterInterface $router
  * @property-read callable $errorHandler
  * @property-read callable $phpErrorHandler
  * @property-read callable $notFoundHandler function($request, $response)
@@ -50,7 +55,7 @@ class App
      *
      * @var string
      */
-    const VERSION = '3.7.0';
+    const VERSION = '3.5.0';
 
     /**
      * Container
@@ -386,9 +391,9 @@ class App
                 while ($amountToRead > 0 && !$body->eof()) {
                     $data = $body->read(min($chunkSize, $amountToRead));
                     echo $data;
-
+                    
                     $amountToRead -= strlen($data);
-
+                                        
                     if (connection_status() != CONNECTION_NORMAL) {
                         break;
                     }
@@ -592,7 +597,7 @@ class App
             $params = [$e->getRequest(), $e->getResponse(), $e->getAllowedMethods()];
         } elseif ($e instanceof NotFoundException) {
             $handler = 'notFoundHandler';
-            $params = [$e->getRequest(), $e->getResponse(), $e];
+            $params = [$e->getRequest(), $e->getResponse()];
         } elseif ($e instanceof SlimException) {
             // This is a Stop exception and contains the response
             return $e->getResponse();
