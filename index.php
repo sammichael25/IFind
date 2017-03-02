@@ -30,7 +30,7 @@ $app->get('/templates/signup.phtml', function (Request $request, Response $respo
 });
 
 $app->get('/home', function (Request $request, Response $response){
-	return $this->renderer->render($response, "/timetable.phtml");
+	return $this->renderer->render($response, "/timetable.php");
 });
 
 $app->post("/signup", function(Request $request, Response $response){

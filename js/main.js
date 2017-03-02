@@ -69,7 +69,7 @@ function login(){
 				closeOnConfirm: false
         },
 		function(){
-			window.location.href = 'timetable.phtml';
+			window.location.href = 'timetable.php';
 		});
     }
 	else{
