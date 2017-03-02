@@ -21,17 +21,31 @@ function processAllCourses(records){
 }
 
 function addCourse(){
-	alert("hi");
+	//alert("hi");
 	var courseCode = $("#courseCode").val();
 	
 	var user = {
 		"courseCode": courseCode
 	};
-	alert(courseCode);
-	$.post("index.php/addcourse", user, function(res){
-		alert(res.id);
-		if(res.id && res.id > 0)swal("Saved", "Course Saved", "success");
-		else swal("Upload Error", "Could not save", "error");
+	//alert(courseCode);
+	$.post("../index.php/addcourse", user, function(res){
+		//alert(res.id);
+		if(res.id && res.id > 0){
+			swal({ 
+                title: "Course Saved",
+                text: "Successful!",
+                type: "success",
+				showCancelButton: false,
+				confirmButtonText: "Ok",   
+				closeOnConfirm: false
+            },
+                function(){
+                    window.location.href = 'timetable.php';
+            });
+		}
+		else{
+			swal("Upload Error", "Could not save", "error");
+		}
 		hideCourseForm();
 		clearFields();
 	},"json");
