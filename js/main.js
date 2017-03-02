@@ -108,11 +108,19 @@ function createTable(records){
     $(sec_id).html(htmlStr);
 }
 //-----------------------------------------
-//show and hide branch form
+//show and hide functions
 function AddCourseForm(){
 	$('#addCourseForm').show("slow");
 }
 
 function hideCourseForm(){
 	$('#addCourseForm').hide("slow");
+}
+
+function showSearchBar(){
+	$('#classroomSearch').show("slow");
+}
+
+function hideSearchBar(){
+	$('#classroomSearch').hide("slow");
 }

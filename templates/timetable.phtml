@@ -11,12 +11,11 @@
 
     <title>Timetable</title>
 
-<!-- Bootstrap Core CSS -->
-<link href="../css/bootstrap.min.css" rel="stylesheet">
-
 <!-- Custom CSS -->
 <link href="../css/logo-nav.css" rel="stylesheet">
-	
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
 <link href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.css" rel="stylesheet">	
 </head>
 
@@ -44,10 +43,31 @@
                         <a href="#">About</a>
                     </li>
                     <li>
-                        <a href="#">Search Classroom</a>
+						<!-- <button type="button" onclick="showSearchBar();" class="btn btn-info">Search Classroom</button> -->
+						<a id="showSearchBar" href="#" onclick="showSearchBar(); return false;">Search Classroom</a>
+						<div class="container" id ="classroomSearch" style ="display:none;">
+							<div class="row">
+							  <div class="col-md-6">
+								<!-- <a href='#'>Search Classroom</a> -->
+								<div id="custom-search-input">
+									<div class="input-group col-md-12">
+										<input type="text" class="form-control input-lg" placeholder="Search.." />
+											<span class="input-group-btn">
+												<button onclick ="hideSearchBar();" class="btn btn-info btn-lg" type="button">
+												<i class="glyphicon glyphicon-search"></i>
+												</button>
+												<button onclick ="hideSearchBar();" class="btn btn-info btn-lg" type="button">
+												<i class="glyphicon glyphicon-remove"></i>
+												</button>
+											</span>
+									</div>
+								</div>
+							  </div>
+							</div>
+						</div>
                     </li>
                     <li>
-                        <a href="index.php">Logout</a>
+                        <a href="login.php">Logout</a>
                     </li>
                 </ul>
             </div>
@@ -150,14 +170,15 @@
 	
 <script src="../js/main.js"></script>
 
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>		
 <script src="bower_components/jquery/dist/jquery.js"></script>	
 <script src="../bower_components/angular/angular.min.js"></script>
 <script src="../bower_components/angular-route/angular-route.min.js"></script>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.js"></script>
-<!-- Bootstrap Core JavaScript -->
-<script src="js/bootstrap.min.js"></script>
+
 <script src="../js/ie10-viewport-bug-workaround.js"></script>	
 
 </body>
