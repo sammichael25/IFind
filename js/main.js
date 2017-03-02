@@ -1,9 +1,46 @@
 "use strict";
-console.log("hello I'm connected to the world");
 
 $(document).ready(function(){
-	console.log("All Elements in the Page was successfully loaded, we can begin our application logic");
-});
+	retrieveAllCourses();
+	});
+//-----------------------------------------------
+//Gather and process data
+
+function retrieveAllCourses(){
+	//alert("hi");
+	$.get("../index.php/courses", processAllCourses, "json"); 
+	}
+
+function processAllCourses(records){
+    if ($("#courseCode").length > 0){ // the course code select is available so we can display all courses
+        records.forEach(function(course){
+            var htmlStr = "<option value='"+course.courseCode+"'>"+course.courseCode+"</option>";
+            $("#courseCode").append(htmlStr);
+        })
+    }
+}
+
+function addCourse(){
+	alert("hi");
+	var courseCode = $("#courseCode").val();
+	
+	var user = {
+		"courseCode": courseCode
+	};
+	alert(courseCode);
+	$.post("index.php/addcourse", user, function(res){
+		alert(res.id);
+		if(res.id && res.id > 0)swal("Saved", "Course Saved", "success");
+		else swal("Upload Error", "Could not save", "error");
+		hideCourseForm();
+		clearFields();
+	},"json");
+	return false;
+}
+
+function clearFields(){
+	$("#courseCode").val("");
+}
 
 //-----------------------------------------------------------------------------------------------------
 // Registration functionality
@@ -57,8 +94,8 @@ function login(){
         "password": password
     };
 
-    alert(email);
-    $.post("../index.php/login", user, function(res){
+    //alert(email);
+    $.post("index.php/login", user, function(res){
         if(res.loginstatus){
             swal({
 				title: "succes",
@@ -69,7 +106,7 @@ function login(){
 				closeOnConfirm: false
         },
 		function(){
-			window.location.href = 'timetable.php';
+			window.location.href = 'templates/timetable.php';
 		});
     }
 	else{

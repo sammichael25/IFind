@@ -44,4 +44,33 @@ function checkLogin($email, $password){
 	return false;
 }
 
+function getAllCourses(){
+	$db = getDBConnection();
+	$courses = [];
+	if ($db != null){
+		$sql = "SELECT courseCode, courseName FROM `course`";
+		$res = $db->query($sql);
+		while($res && $row = $res->fetch_assoc()){
+			$courses[] = $row;
+		}
+		$db->close();
+	}
+	return $courses;
+}
+
+function saveCourse($courseCode){
+	$userId = $_SESSION['id'];
+	$sql = "INSERT INTO `user_course` (`userId`, `courseCode`) VALUES ('$userId', '$courseCode')";
+	$id = -1;
+	$db = getDBConnection();
+	if ($db != NULL){
+		$res = $db->query($sql);
+		if ($res && $db->insert_id > 0){
+			$id = $db->insert_id;
+		}
+		$db->close();
+	}
+	return $id;
+}
+
 ?>

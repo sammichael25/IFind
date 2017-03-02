@@ -14,7 +14,7 @@
 
 
 <!-- Custom CSS -->
-<link href="../css/logo-nav.css" rel="stylesheet">
+<link href="css/logo-nav.css" rel="stylesheet">
 
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 <link href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.css" rel="stylesheet">	
@@ -27,7 +27,7 @@
         <div class="row">
             <div class="col-md-3 col-md-offset-3 center">
                 <a class="header" href="#">
-                    <img src="../images/logo.png" id="logo2" alt="logo">
+                    <img src="images/logo.png" id="logo2" alt="logo">
                 </a>
             </div>
         </div>
@@ -83,16 +83,16 @@
              </footer>
 			</div>
 			
-<script src="../js/main.js"></script>
+<script src="js/main.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>		
-<script src="../bower_components/jquery/dist/jquery.js"></script>	
-<script src="../bower_components/angular/angular.min.js"></script>
-<script src="../bower_components/angular-route/angular-route.min.js"></script>
+<script src="bower_components/jquery/dist/jquery.js"></script>	
+<script src="bower_components/angular/angular.min.js"></script>
+<script src="bower_components/angular-route/angular-route.min.js"></script>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.js"></script>
 
-<script src="../js/ie10-viewport-bug-workaround.js"></script>	
+<script src="js/ie10-viewport-bug-workaround.js"></script>	
 </body>
 
 </html>

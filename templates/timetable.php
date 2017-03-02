@@ -39,7 +39,7 @@ if(!isset($_SESSION)){
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="timetable.html">
+                <a class="navbar-brand" href="../templates/timetable.php">
                     <img src="../images/logo.png" id="logo" alt="">
                 </a>
             </div>
@@ -52,31 +52,32 @@ if(!isset($_SESSION)){
                     <li>
 						<!-- <button type="button" onclick="showSearchBar();" class="btn btn-info">Search Classroom</button> -->
 						<a id="showSearchBar" href="#" onclick="showSearchBar(); return false;">Search Classroom</a>
-						<div class="container" id ="classroomSearch" style ="display:none;">
-							<div class="row">
-							  <div class="col-md-6">
-								<!-- <a href='#'>Search Classroom</a> -->
+					</li>
+					</ul>
+					<ul>
+					<li>
+						<div id ="classroomSearch" style ="display:none;">
 								<div id="custom-search-input">
-									<div class="input-group col-md-12">
-										<input type="text" class="form-control input-lg" placeholder="Search.." />
-											<span class="input-group-btn">
-												<button onclick ="hideSearchBar();" class="btn btn-info btn-lg" type="button">
+									<div class="input-group col-sm-4">
+										<input type="text" class="form-control input-sm" placeholder="Search.." />
+											<div class="input-group-btn">
+												<button onclick ="hideSearchBar();" class="btn btn-info btn-sm" type="button">
 												<i class="glyphicon glyphicon-search"></i>
 												</button>
-												<button onclick ="hideSearchBar();" class="btn btn-info btn-lg" type="button">
+												<button onclick ="hideSearchBar();" class="btn btn-info btn-sm" type="button">
 												<i class="glyphicon glyphicon-remove"></i>
 												</button>
-											</span>
+											</div>
 									</div>
 								</div>
-							  </div>
-							</div>
 						</div>
-                    </li>
-                    <li>
-                        <a href="login.php">Logout</a>
-                    </li>
-                </ul>
+					</li>
+					</ul>
+					<ul class="navbar-right">
+                    <li><a href="../"><span class="glyphicon glyphicon-log-out"></span>Logout</a></li>
+					</ul>
+				</ul>
+                
             </div>
             <!-- /.navbar-collapse -->
         </div>
@@ -105,28 +106,24 @@ if(!isset($_SESSION)){
 				<!-- Adding user courses -->
 	<div class ="row" style="display:none" id="addCourseForm">
 		<div class ="col-md-6">
-		<form name="courseForm" enctype="multipart/form-data" class="form-horizontal" method="POST" action="templates/timetable.phtml">
+		<form name="courseForm" enctype="multipart/form-data" class="form-horizontal" method="POST" action="timetable.php" onsubmit="return addCourse();">
 			<fieldset>
 			<legend style="text-align:center">Add Course</legend>
+			
 			<div class="form-group">
-			<label class="col-md-4 control-label" for="courseCode">Course Code</label> 
+			<label class="col-md-4 control-label" for="courseCode">Course</label> 
 				<div class="col-md-6">
 				<select class="form-control" name="courseCode" id="courseCode">
-					<option value="0">Choose Course Code</option>
+					<option value="0">Choose Course</option>
 				</select>
 				</div>
 			</div>
-			<div class="form-group">
-			<label class="col-md-4 control-label" for="courseName">Course Name</label> 
-			<div class="col-md-6">
-				<input class="form-control input-lg" name="courseName" id="CourseName" type="text" placeholder="" required="">
-			</div>
-			</div>
+			
 			<div class="form-group">
 			<label class="col-md-4 control-label" for="Add"></label>
 			<div class="col-md-4">
-				<button type="submit" id="addBtn" class="btn btn-info" value="Login">Add</button>
-				<button type="submit" onclick ="hideCourseForm();" class="btn btn-info">Cancel</button>
+				<button type="submit" id="addBtn" class="btn btn-primary">Add</button>
+				<button type="button" onclick ="hideCourseForm();" class="btn btn-primary">Cancel</button>
 			</div>
 			</div>
 			</fieldset>
@@ -136,7 +133,7 @@ if(!isset($_SESSION)){
 				
 				<div class ="row">
 					<div class ="form-group">
-						<button type="button" onclick ="AddCourseForm();" class="btn btn-info">Add Courses</button>
+						<button type="button" onclick ="AddCourseForm(); retrieveAllCourses();" class="btn btn-info">Add Courses</button>
 					</div>
 				</div>
 				

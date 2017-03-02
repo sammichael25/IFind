@@ -33,6 +33,13 @@ $app->get('/home', function (Request $request, Response $response){
 	return $this->renderer->render($response, "/timetable.php");
 });
 
+$app->get("/courses", function(Request $request, Response $response){
+	$courses = getAllCourses();
+	
+	$response = $response->withJson($courses);
+	return $response;
+});
+
 $app->post("/signup", function(Request $request, Response $response){
 	$post = $request->getParsedBody();
 	$fname = $post['fname'];
@@ -61,6 +68,19 @@ $app->post("/login", function(Request $request, Response $response)use ($app){
 	if ($res){
 		$response = $response->withStatus(201);
 		$response = $response->withJson(array("loginstatus"=> true));
+	} else {
+		$response = $response->withJson(400);
+	}
+	return $response;
+});
+
+$app->post("/addcourse", function(Request $request, Response $response)use ($app){
+	$post = $request->getParsedBody();
+	$courseCode = $post['courseCode'];
+	$res = saveCourse($courseCode);
+	if ($res > 0){
+		$response = $response->withStatus(201);
+		$response = $response->withJson(array("id"=> $res));
 	} else {
 		$response = $response->withJson(400);
 	}
