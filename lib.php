@@ -97,7 +97,64 @@ $courses = array(
                "Thursday"=>$empty,
                "Friday"=>$empty,
                "Saturday"=>$empty,
-            )
+            ),
+            "13:00:00" => array (
+               "Monday"=>$empty,
+               "Tuesday"=>$empty,	
+               "Wednesday"=>$empty,
+               "Thursday"=>$empty,
+               "Friday"=>$empty,
+               "Saturday"=>$empty,
+            ),
+            "14:00:00" => array (
+               "Monday"=>$empty,
+               "Tuesday"=>$empty,	
+               "Wednesday"=>$empty,
+               "Thursday"=>$empty,
+               "Friday"=>$empty,
+               "Saturday"=>$empty,
+            ),
+            "15:00:00" => array (
+               "Monday"=>$empty,
+               "Tuesday"=>$empty,	
+               "Wednesday"=>$empty,
+               "Thursday"=>$empty,
+               "Friday"=>$empty,
+               "Saturday"=>$empty,
+            ),
+            "16:00:00" => array (
+               "Monday"=>$empty,
+               "Tuesday"=>$empty,	
+               "Wednesday"=>$empty,
+               "Thursday"=>$empty,
+               "Friday"=>$empty,
+               "Saturday"=>$empty,
+            ),
+            "17:00:00" => array (
+               "Monday"=>$empty,
+               "Tuesday"=>$empty,	
+               "Wednesday"=>$empty,
+               "Thursday"=>$empty,
+               "Friday"=>$empty,
+               "Saturday"=>$empty,
+            ),
+            "18:00:00" => array (
+               "Monday"=>$empty,
+               "Tuesday"=>$empty,	
+               "Wednesday"=>$empty,
+               "Thursday"=>$empty,
+               "Friday"=>$empty,
+               "Saturday"=>$empty,
+            ),
+            "19:00:00" => array (
+               "Monday"=>$empty,
+               "Tuesday"=>$empty,	
+               "Wednesday"=>$empty,
+               "Thursday"=>$empty,
+               "Friday"=>$empty,
+               "Saturday"=>$empty,
+            ),
+            
 );
  $res=$conn ->query($sql);
     while(($row = $res ->fetch_assoc())!=null){
@@ -111,20 +168,21 @@ $courses = array(
 
 	   $courses[$course->sTime][$course->day]=$course;
        if ($course->fTime - $course->sTime === 2){
-           $courses[$course->fTime][$course->day]=$course;
+           $new_time = (($course->sTime) +1).":00:00";
+           $courses[$new_time][$course->day]=$course;
        }
 	}
 	//echo $courses['09:00:00']['Monday']->courseCode;
-    $time_intervals=['8am-9am','9am-10am','10am-11am','11am-12pm','12pm-1pm'];//index array by default
+    $time_intervals=['8am-9am','9am-10am','10am-11am','11am-12pm','12pm-1pm','1pm-2pm','2pm-3pm','3pm-4pm','4pm-5pm','5pm-6pm','6pm-7pm','7pm-8pm'];//index array by default
 	$i=0;
-    echo "<table class='table table-hover' id='dev-table'>";
-    echo "<thead><tr><th>&nbsp;</th><th>Monday</th><th>Tuesday</th><th>Wednesday</th><th>Thursday</th><th>Friday</th></thead></tr>";
+    echo "<table class='table table-hover' id='dev-table' style='table-layout:fixed'";
+    echo "<thead><tr><th>&nbsp;</th><th>Monday</th><th>Tuesday</th><th>Wednesday</th><th>Thursday</th><th>Friday</th><th>Saturday</th></thead></tr>";
 	foreach($courses as $list => $times)
 	{
-		echo "<tr><td>".$time_intervals[$i++]."</td>";
+		echo "<tr><td>".$time_intervals[$i++]."</td>"; //i need to iterate all these times
     foreach($times as $days => $value){
 		//echo $value->courseCode;
-		echo "<td>".$value->courseCode."</td>";
+		echo "<td>".$value->courseCode."<br>".$value->courseName."<br>".$value->roomId."</td>";
 	}
 	echo "</tr>";
 	}
