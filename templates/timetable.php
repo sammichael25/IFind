@@ -26,8 +26,8 @@ if(!isset($_SESSION)){
 <link href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.css" rel="stylesheet">	
 </head>
 
-<body>
-
+<body onload="retrieveUserData();  retrieveAllDepartment();">
+	
     <!-- Navigation -->
     <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
         <div class="container">
@@ -111,6 +111,13 @@ if(!isset($_SESSION)){
 			<legend style="text-align:center">Add Course</legend>
 			
 			<div class="form-group">
+			<label class="col-md-4 control-label" for="departmentId">Department</label> 
+				<div class="col-md-6">
+					<select class="form-control" name="departmentId" id="departmentId" onchange="clearCourse(); retrieveAllDeptCourses(this.value);">
+						<option value="0">Choose Department</option>
+					</select>
+				</div>
+				
 			<label class="col-md-4 control-label" for="courseCode">Course</label> 
 				<div class="col-md-6">
 				<select class="form-control" name="courseCode" id="courseCode">
@@ -123,7 +130,7 @@ if(!isset($_SESSION)){
 			<label class="col-md-4 control-label" for="Add"></label>
 			<div class="col-md-4">
 				<button type="submit" id="addBtn" class="btn btn-primary">Add</button>
-				<button type="button" onclick ="hideCourseForm();" class="btn btn-primary">Cancel</button>
+				<button type="button" onclick ="clearCourse(); hideCourseForm();" class="btn btn-primary">Cancel</button>
 			</div>
 			</div>
 			</fieldset>
@@ -133,29 +140,18 @@ if(!isset($_SESSION)){
 				
 				<div class ="row">
 					<div class ="form-group">
-						<button type="button" onclick ="AddCourseForm(); retrieveAllCourses();" class="btn btn-info">Add Courses</button>
+						<button type="button" onclick ="clearFields(); AddCourseForm();" class="btn btn-info">Add Courses</button>
 					</div>
 				</div>
 				
 				<div class="panel panel-primary">
 					<div class="panel-heading">
 						<h3 class="panel-title">Personal Timetable</h3>
-						<div id="table_sect"></div>
 					</div>
 				</div>
 			</div>
 		</div>
 	</div>
-	
-			<script type="text/template" id="table_headingt">
-					<table class="table table-hover table-condensed" >
-						<thead>
-							<tr>
-								<th>Time</th><th>Monday</th><th>Tuesday</th><th>Wednesday</th><th>Thursday</th> <th>Friday</th><th>Saturday</th>
-							</tr>
-						</thead>
-						<tbody>
-			</script>
 	
     <!-- /.container -->
 	<div class="container">

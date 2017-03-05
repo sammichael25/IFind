@@ -1,12 +1,13 @@
 "use strict";
 
-$(document).ready(function(){
+/*$(document).ready(function(){
 	retrieveAllCourses();
-	});
+	retrieveUserData();
+	});*/
 //-----------------------------------------------
 //Gather and process data
 
-function retrieveAllCourses(){
+/*function retrieveAllCourses(){
 	//alert("hi");
 	$.get("../index.php/courses", processAllCourses, "json"); 
 	}
@@ -14,7 +15,40 @@ function retrieveAllCourses(){
 function processAllCourses(records){
     if ($("#courseCode").length > 0){ // the course code select is available so we can display all courses
         records.forEach(function(course){
-            var htmlStr = "<option value='"+course.courseCode+"'>"+course.courseCode+"</option>";
+            var htmlStr = "<option value='"+course.courseCode+"'>"+ course.courseCode+"</option>";
+            $("#courseCode").append(htmlStr);
+        })
+    }
+}*/
+function retrieveAllDepartment(){
+	$.get("index.php/departments", processAllDepartments, "json"); 
+	}
+	
+function retrieveAllDepartments(){
+	$.get("../index.php/departments", processAllDepartments, "json"); 
+	}
+
+function processAllDepartments(records){
+    if ($("#departmentId").length > 0){ // the department select is available so we can display all courses
+        records.forEach(function(dept){
+            var htmlStr = "<option value='"+dept.departmentId+"'>"+dept.departmentId+"</option>";
+            $("#departmentId").append(htmlStr);
+        })
+    }
+}
+
+
+function retrieveAllDeptCourses(departmentid){
+	//alert("hi");
+	var dept = departmentId.value;
+	//alert(dept);
+	$.get("../index.php/deptcourses/"+dept, processAllDeptCourses, "json"); 
+	}
+
+function processAllDeptCourses(records){
+    if ($("#courseCode").length > 0){ // the course code select is available so we can display all courses
+        records.forEach(function(course){
+            var htmlStr = "<option value='"+course.courseCode+"'>"+ course.courseCode+"</option>";
             $("#courseCode").append(htmlStr);
         })
     }
@@ -22,12 +56,14 @@ function processAllCourses(records){
 
 function addCourse(){
 	//alert("hi");
+	var departmentId = $("#departmentId").val();
 	var courseCode = $("#courseCode").val();
 	
 	var user = {
+		"departmentId": departmentId,
 		"courseCode": courseCode
 	};
-	//alert(courseCode);
+	//alert(departmentId);
 	$.post("../index.php/addcourse", user, function(res){
 		//alert(res.id);
 		if(res.id && res.id > 0){
@@ -53,43 +89,45 @@ function addCourse(){
 }
 
 function clearFields(){
-	$("#courseCode").val("");
+	$("#departmentId").val(0);
+	$("#courseCode").val(0);
+}
+
+function clearCourse(){
+	$('#courseCode').find('option:gt(0)').remove();
 }
 
 //-----------------------------------------------------------------------------------------------------
 // Registration functionality
 function register(){
-    var firstname = $("#fname").val();
-    var lastname = $("#lname").val();
+    var fname = $("#fname").val();
+    var lname = $("#lname").val();
 	var departmentId = $("#departmentId").val();
     var email = $("#email").val();
     var password = $("#password").val();
-    var password2 = $("#password2").val();
    
-
-	
     var regUser = {
         
-        "firstname" : fname,
-        "lastname" : lname,
-		"department" : departmentId,
+        "fname" : fname,
+        "lname" : lname,
+		"departmentId" : departmentId,
         "email" : email,
         "password" : password
     };
 
-    $.post("index.php/signup", regUser, function(res){
-        if(res){
-            console.log(res);
+    $.post("../index.php/signup", regUser, function(res){
+        //alert(res.fname);
+		if(res){
             swal({ 
                 title: "Registration Complete!",
-                text: "Successful :)!",
+                text: "Successful!",
                 type: "success",
 				showCancelButton: false,
 				confirmButtonText: "Ok",   
 				closeOnConfirm: false
             },
                 function(){
-                    window.location.href = 'templates/login.php';
+                    window.location.href = '../';
             });
         }
         else{
@@ -131,7 +169,7 @@ function login(){
 }
 
 function retrieveUserData(){
-    $.get("index.php/products", processUserData, "json");
+    $.get("../index.php/timetable", processUserData, "json");
 }
 
 function processUserData(records){
@@ -141,17 +179,14 @@ function processUserData(records){
 
 function createTable(records){
     var key;
-    var sec_id = "#table_sect";
-    var htmlStr = $("#table_headingt").html(); //Includes all the table, thead and tbody declarations
-
+    var sec_id = "#table_secm";
+    var htmlStr = $("#table_headingm").html(); //Includes all the table, thead and tbody declarations
+	
     records.forEach(function(el){
         htmlStr += "<tr>";
-        htmlStr += "<td>" + el['sTime'] + el['fTime'] +"</td>";
-        htmlStr += "<td>" + el['f'] + "</td>";
-        htmlStr += "<td>"+ el['country'] +"</td>";
-        htmlStr += "<td><button class='btn btn-primary' onclick=\"display("+el.id+")\"><i class='fa fa-eye' aria-hidden='true'></i></button> ";
-        htmlStr += "<button class='btn btn-success' onclick=\"addCart("+el.id+")\"><i class='fa fa-cart-plus' aria-hidden='true'></i></button> ";
-        htmlStr += "<button class='btn btn-danger' onclick=\"display("+el.id+")\"><i class='fa fa-trash' aria-hidden='true'></i></button></td>";
+        htmlStr += "<td>" + el['sTime'] + "-" + el['fTime'] + "</td>";
+        htmlStr += "<td>" + el['courseName'] + "     " + el['roomId'] + "</td>";
+        //htmlStr += "<td>"+ el['roomId'] +"</td>";
         htmlStr +=" </tr>" ;
     });
 

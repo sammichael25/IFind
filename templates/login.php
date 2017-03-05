@@ -39,7 +39,7 @@
            <div class="signup-header1 wow fadeInUp">
            <h3 class="form-title text-center">Sign Up Now!</h3>
            <p >Don't have an account.</p><p>Click the button below to sign up now</p><br>
-           <form class="form-header" action="signup.phtml" role="form" method="GET" id="#">
+           <form class="form-header" action="templates/signup.phtml" role="form" method="GET" id="#">
                <div class="form-group last">
 						<input type="submit" id="signupBtn" class="btn btn-primary btn-block btn-lg" value="Sign Up">
 					</div>

@@ -25,7 +25,7 @@ $app->get('/', function (Request $request, Response $response) {
 	return $this->renderer->render($response, "/login.php");
 });
 
-$app->get('/templates/signup.phtml', function (Request $request, Response $response){
+$app->get('/signup', function (Request $request, Response $response){
 	return $this->renderer->render($response, "/signup.phtml");
 });
 
@@ -37,6 +37,28 @@ $app->get("/courses", function(Request $request, Response $response){
 	$courses = getAllCourses();
 	
 	$response = $response->withJson($courses);
+	return $response;
+});
+
+$app->get("/deptcourses/{id}", function(Request $request, Response $response){
+	$val = $request->getAttribute('id');
+	$courses = getAllDeptCourses($val);
+	
+	$response = $response->withJson($courses);
+	return $response;
+});
+
+$app->get("/departments", function(Request $request, Response $response){
+	$departments = getAllDepartments();
+	
+	$response = $response->withJson($departments);
+	return $response;
+});
+
+$app->get("/timetable", function(Request $request, Response $response){
+	$timetable = getUserTable();
+	
+	$response = $response->withJson($timetable);
 	return $response;
 });
 
@@ -76,6 +98,7 @@ $app->post("/login", function(Request $request, Response $response)use ($app){
 
 $app->post("/addcourse", function(Request $request, Response $response)use ($app){
 	$post = $request->getParsedBody();
+	$departmentId = $post['departmentId'];
 	$courseCode = $post['courseCode'];
 	$res = saveCourse($courseCode);
 	if ($res > 0){

@@ -48,7 +48,7 @@ function getAllCourses(){
 	$db = getDBConnection();
 	$courses = [];
 	if ($db != null){
-		$sql = "SELECT courseCode, courseName FROM `course`";
+		$sql = "SELECT distinct courseCode, courseName FROM `course`";
 		$res = $db->query($sql);
 		while($res && $row = $res->fetch_assoc()){
 			$courses[] = $row;
@@ -56,6 +56,34 @@ function getAllCourses(){
 		$db->close();
 	}
 	return $courses;
+}
+
+function getAllDeptCourses($departmentId){
+	$db = getDBConnection();
+	$deptcourses = [];
+	if ($db != null){
+		$sql = "SELECT distinct courseCode, courseName, departmentId FROM `course` WHERE `departmentId` = '$departmentId'";
+		$res = $db->query($sql);
+		while($res && $row = $res->fetch_assoc()){
+			$deptcourses[] = $row;
+		}
+		$db->close();
+	}
+	return $deptcourses;
+}
+
+function getAllDepartments(){
+	$db = getDBConnection();
+	$departments = [];
+	if ($db != null){
+		$sql = "SELECT departmentId FROM `department`";
+		$res = $db->query($sql);
+		while($res && $row = $res->fetch_assoc()){
+			$departments[] = $row;
+		}
+		$db->close();
+	}
+	return $departments;
 }
 
 function saveCourse($courseCode){
@@ -71,6 +99,21 @@ function saveCourse($courseCode){
 		$db->close();
 	}
 	return $id;
+}
+
+function getUserTable(){
+	$userId = $_SESSION['id'];
+	$sql = "SELECT c.courseCode, u.courseCode, courseName, roomId, sTime, fTime, day FROM course c JOIN user_course u ON u.courseCode = c.courseCode AND u.userId = $userId AND c.day = 'Monday' ORDER BY sTime ASC;";
+	$table = [];
+	$db = getDBConnection();
+	if($db != NULL){
+		$res = $db->query($sql);
+		while($res && $row = $res->fetch_assoc()){
+			$table[] = $row;
+		}
+		$db->close();
+	}
+	return $table;
 }
 
 ?>
