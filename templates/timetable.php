@@ -26,7 +26,7 @@ if(!isset($_SESSION)){
 <link href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.css" rel="stylesheet">	
 </head>
 
-<body onload="retrieveUserData();  retrieveAllDepartment();">
+<body onload="retrieveUserData();  retrieveAllDepartments();">
 	
     <!-- Navigation -->
     <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
