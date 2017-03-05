@@ -35,7 +35,7 @@ function checkLogin($email, $password){
 		$res = $db->query($sql);
 		if ($res && $row = $res->fetch_assoc()){
 			if($row['password'] == $password){
-				$_SESSION["user"] = $row['fname'];
+				$_SESSION["user"] = $row['fName'];
 				$_SESSION["id"] = $row['userId'];
 				return true;
 			}
