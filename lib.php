@@ -119,7 +119,7 @@ function saveCourse($courseCode){
 function genTimetable(){ //retrieving courses to generate the timetable for the user 
 include "course.php";
 $userId = $_SESSION['id'];	
-$conn = new mysqli("localhost","root","","ifinddb");
+$db = getDBConnection();
 $sql = "SELECT c.courseCode, u.courseCode, courseName, roomId, sTime, fTime, day FROM course c JOIN user_course u ON u.courseCode = c.courseCode AND u.userId = $userId";
 $empty= new Course(); //empty course object
 $courses = array( //associative 2D array using Days and Time as the indices
@@ -221,7 +221,7 @@ $courses = array( //associative 2D array using Days and Time as the indices
             ),
             
 );
- $res=$conn ->query($sql);
+ $res=$db ->query($sql);
     while(($row = $res ->fetch_assoc())!=null){ //fetching course information row by row
        $course=new Course(); //creating course object
        $course->courseCode =$row["courseCode"];

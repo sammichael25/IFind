@@ -147,11 +147,11 @@ if(!isset($_SESSION)){
 				<div class="panel panel-primary">
 					<div class="panel-heading">
 						<h3 class="panel-title">Personal Timetable</h3>
+					</div>
 						<?php 
 							include "../lib.php";
     						genTimetable(); //filling courses array                 					
 						?>
-					</div>
 				</div>
 			</div>
 		</div>
