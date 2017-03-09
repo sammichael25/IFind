@@ -48,6 +48,14 @@ $app->get("/deptcourses/{id}", function(Request $request, Response $response){
 	return $response;
 });
 
+$app->get("/usercourses", function(Request $request, Response $response){
+	//$val = $request->getAttribute('id');
+	$courses = getAllUserCourses();
+	
+	$response = $response->withJson($courses);
+	return $response;
+});
+
 $app->get("/departments", function(Request $request, Response $response){
 	$departments = getAllDepartments();
 	
@@ -59,6 +67,19 @@ $app->get("/timetable", function(Request $request, Response $response){
 	$timetable = getUserTable();
 	
 	$response = $response->withJson($timetable);
+	return $response;
+});
+
+$app->get("/delcourse/{id}", function(Request $request, Response $response){
+	$data = $request->getAttribute('id');
+	$res = deleteCourse($data);
+	
+	if($res){
+		$response = $response->withStatus(201);
+		$response = $response->withJson(array("deleted" => $res));
+	}else{
+		$response = $response->withJson(false);
+	}
 	return $response;
 });
 

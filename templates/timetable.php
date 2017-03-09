@@ -137,10 +137,39 @@ if(!isset($_SESSION)){
 		</form>
 	</div>
 	</div>
+	
+	<!-- Delete user courses -->
+	<div class ="row" style="display:none" id="deleteCourseForm">
+		<div class ="col-md-6">
+		<form name="deleteCourseForm" enctype="multipart/form-data" class="form-horizontal" method="POST" action="timetable.php">
+			<fieldset>
+			<legend style="text-align:center">Delete Course</legend>
+			
+			<div class="form-group">	
+			<label class="col-md-4 control-label" for="courseCde">Course</label> 
+				<div class="col-md-6">
+				<select class="form-control" name="courseCde" id="courseCde">
+					<option value="0">Choose Course</option>
+				</select>
+				</div>
+			</div>
+			
+			<div class="form-group">
+			<label class="col-md-4 control-label" for="delete"></label>
+			<div class="col-md-4">
+				<button type="button" id="addBtn" onclick="deleteCourse();" class="btn btn-danger">Delete</button>
+				<button type="button" onclick ="clearCourse(); hideDeleteForm();" class="btn btn-primary">Cancel</button>
+			</div>
+			</div>
+			</fieldset>
+		</form>
+	</div>
+	</div>
 				
 				<div class ="row">
 					<div class ="form-group">
 						<button type="button" onclick ="clearFields(); AddCourseForm();" class="btn btn-info">Add Courses</button>
+						<button type="button" onclick ="clearFields(); showDeleteForm(); getUserCourses();" class="btn btn-info">Delete Courses</button>
 					</div>
 				</div>
 				
@@ -148,6 +177,10 @@ if(!isset($_SESSION)){
 					<div class="panel-heading">
 						<h3 class="panel-title">Personal Timetable</h3>
 					</div>
+						<?php 
+							include "../lib.php";
+    						genTimetable(); //filling courses array                 					
+						?>
 				</div>
 			</div>
 		</div>

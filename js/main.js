@@ -54,6 +54,19 @@ function processAllDeptCourses(records){
     }
 }
 
+function getUserCourses(){
+	$.get("../index.php/usercourses", processUserCourses, "json");
+}
+
+function processUserCourses(records){
+	if ($("#courseCde").length > 0){ // the course code select is available so we can display all courses
+        records.forEach(function(course){
+            var htmlStr = "<option value='"+course.courseCode+"'>"+ course.courseCode+"</option>";
+            $("#courseCde").append(htmlStr);
+        })
+    }
+}
+
 function addCourse(){
 	//alert("hi");
 	var departmentId = $("#departmentId").val();
@@ -88,6 +101,33 @@ function addCourse(){
 	return false;
 }
 
+function deleteCourse(){
+	var courseCde = $("#courseCde").val();
+	    swal({
+        title: "Do You Want To Delete?",
+        text: "This action is permanent!",
+        type: "warning",
+        showCancelButton: true,
+        confirmButtonColor: '#DD6B55',
+        confirmButtonText: 'Yes, Go Ahead.',
+        cancelButtonText: "No, cancel it!",
+        closeOnConfirm: false,
+        closeOnCancel: false
+    },
+    function(isConfirm){
+		if (isConfirm){
+			$.get("../index.php/delcourse/"+courseCde, function(res){
+			swal("Deleted!", "Course has been deleted.", "success");
+			window.location.href = 'timetable.php';
+			},"json");
+		} else {
+		swal("Cancelled", "Course not deleted", "error");
+		}
+});
+hideDeleteForm();
+clearDeleteForm();
+}
+
 function clearFields(){
 	$("#departmentId").val(0);
 	$("#courseCode").val(0);
@@ -95,6 +135,10 @@ function clearFields(){
 
 function clearCourse(){
 	$('#courseCode').find('option:gt(0)').remove();
+}
+
+function clearDeleteForm(){
+	$('#courseCde').find('option:gt(0)').remove();
 }
 
 //-----------------------------------------------------------------------------------------------------
@@ -201,6 +245,14 @@ function AddCourseForm(){
 
 function hideCourseForm(){
 	$('#addCourseForm').hide("slow");
+}
+
+function showDeleteForm(){
+	$('#deleteCourseForm').show("slow");
+}
+
+function hideDeleteForm(){
+	$('#deleteCourseForm').hide("slow");
 }
 
 function showSearchBar(){
