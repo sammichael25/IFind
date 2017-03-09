@@ -101,20 +101,34 @@ function saveCourse($courseCode){
 	return $id;
 }
 
-// function getUserTable(){
-// 	$userId = $_SESSION['id'];
-// 	$sql = "SELECT c.courseCode, u.courseCode, courseName, roomId, sTime, fTime, day FROM course c JOIN user_course u ON u.courseCode = c.courseCode AND u.userId = $userId AND c.day = 'Monday' ORDER BY sTime ASC;";
-// 	$table = [];
-// 	$db = getDBConnection();
-// 	if($db != NULL){
-// 		$res = $db->query($sql);
-// 		while($res && $row = $res->fetch_assoc()){
-// 			$table[] = $row;
-// 		}
-// 		$db->close();
-// 	}
-// 	return $table;
-// }
+function deleteCourse($courseCde){
+	$userId = $_SESSION['id'];
+	$db = getDBConnection();
+	
+	$sql = "DELETE FROM `user_course` WHERE `courseCode` = '$courseCde' AND `userId` = '$userId'";
+	$res = null;
+	if($db!= Null){
+		$res = $db->query($sql);
+		$db->close();
+	}
+	return $res;
+}
+
+function getAllUserCourses(){
+	$userId = $_SESSION['id'];
+	$db = getDBConnection();
+	$courses = [];
+	if ($db != null){
+		$sql = "SELECT userId, courseCode FROM `user_course` WHERE userId=$userId";
+		$res = $db->query($sql);
+		while($res && $row = $res->fetch_assoc()){
+			$courses[] = $row;
+		}
+		$db->close();
+	}
+	return $courses;
+}
+
 
 function genTimetable(){ //retrieving courses to generate the timetable for the user 
 include "course.php";
