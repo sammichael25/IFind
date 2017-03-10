@@ -238,16 +238,16 @@ $courses = array( //associative 2D array using Days and Time as the indices
  $res=$db ->query($sql);
     while(($row = $res ->fetch_assoc())!=null){ //fetching course information row by row
        $course=new Course(); //creating course object
-       $course->courseCode =$row["courseCode"];
-       $course->courseName =$row["courseName"];
-       $course->sTime = $row["sTime"];
-       $course->fTime =$row["fTime"];
-       $course->day =$row["day"];
-       $course->roomId =$row["roomId"];
+       $course->courseCode =$row["courseCode"]; //course code from course table added to course object
+       $course->courseName =$row["courseName"]; //name of course from course table added to course object
+       $course->sTime = $row["sTime"]; //start time of course from course table added to course object
+       $course->fTime =$row["fTime"]; //finish time of course from course table added to course object
+       $course->day =$row["day"]; //day course is held from course table added to course object
+       $course->roomId =$row["roomId"]; //room where course is taught from course table added to course object
 
-	   $courses[$course->sTime][$course->day]=$course;
-       if ($course->fTime - $course->sTime === 2){
-           $new_time = (($course->sTime) +1).":00:00";
+	   $courses[$course->sTime][$course->day]=$course; 
+       if ($course->fTime - $course->sTime === 2){ //checks if course session is two hours; no checks if course is >2 hours
+           $new_time = (($course->sTime) +1).":00:00"; //if true then add hour unto another hour
            $courses[$new_time][$course->day]=$course;
        }
 	}
@@ -256,12 +256,12 @@ $courses = array( //associative 2D array using Days and Time as the indices
 	$i=0;
     echo "<table class='table table-hover table-responsive' id='dev-table' style='table-layout:fixed'";
     echo "<thead><tr><th>&nbsp;</th><th>Monday</th><th>Tuesday</th><th>Wednesday</th><th>Thursday</th><th>Friday</th><th>Saturday</th></thead></tr>";
-	foreach($courses as $list => $times)
+	foreach($courses as $list => $times) //printing timetable row by row
 	{
 		echo "<tr><td>".$time_intervals[$i++]."</td>"; //i need to iterate all these times
     foreach($times as $days => $value){
 		//echo $value->courseCode;
-		echo "<td>".$value->courseCode."<br>".$value->courseName."<br>".$value->roomId."</td>";
+		echo "<td>".$value->courseCode."<br>".$value->courseName."<br>"."<a href='map.php'>".$value->roomId."</a>"."</td>";
 	}
 	echo "</tr>";
 	}

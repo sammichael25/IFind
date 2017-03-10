@@ -128,8 +128,8 @@ if(!isset($_SESSION)){
 			<div class="form-group">
 			<label class="col-md-4 control-label" for="Add"></label>
 			<div class="btn-group">
-				<button type="submit" id="addBtn" class="btn btn-primary">Add</button>
-				<button type="button" onclick ="clearCourse(); hideCourseForm();" class="btn btn-primary">Cancel</button>
+				<button type="submit" id="addBtn" class="btn btn-primary"><span class="glyphicon glyphicon-ok"></span> Add</button>
+				<button type="button" onclick ="clearCourse(); hideCourseForm();" class="btn btn-primary"><span class="glyphicon glyphicon-remove"></span> Cancel</button>
 			</div>
 			</div>
 			</fieldset>
@@ -157,8 +157,8 @@ if(!isset($_SESSION)){
 			<label class="col-md-4 control-label" for="delete"></label>
 			<!-- <div class="col-md-4"> -->
 			<div class="btn-group">
-				<button type="button" id="addBtn" onclick="deleteCourse();" class="btn btn-danger">Delete</button>
-				<button type="button" onclick ="clearCourse(); hideDeleteForm();" class="btn btn-primary">Cancel</button>
+				<button type="button" id="addBtn" onclick="deleteCourse();" class="btn btn-danger"><span class="glyphicon glyphicon-trash"></span> Delete</button>
+				<button type="button" onclick ="clearCourse(); hideDeleteForm();" class="btn btn-primary"><span class="glyphicon glyphicon-remove"></span> Cancel</button>
 			</div>
 			<!-- </div> -->
 			</div>
@@ -169,9 +169,9 @@ if(!isset($_SESSION)){
 				
 				<div class ="row">
 					<div class ="form-group">
-						<button type="button" onclick ="clearFields(); AddCourseForm();" class="btn btn-info">Add Courses</button>
-						<button type="button" onclick ="clearFields(); showDeleteForm(); getUserCourses();" class="btn btn-info">Delete Courses</button>
-						<button type="button" name="save" onclick="window.location.href = 'pdf.php'" class="btn btn-info">Save Timetable</button>
+						<button type="button" onclick ="clearFields(); AddCourseForm();" class="btn btn-info"><span class="glyphicon glyphicon-plus"></span> Add Courses</button>
+						<button type="button" onclick ="clearFields(); showDeleteForm(); getUserCourses();" class="btn btn-info"><span class="glyphicon glyphicon-trash"></span> Delete Courses</button>
+						<button type="button" name="save" onclick="window.location.href = 'pdf.php'" class="btn btn-info"><span class="glyphicon glyphicon-download"></span> Save Timetable</button>
 					</div>
 				</div>
 				
