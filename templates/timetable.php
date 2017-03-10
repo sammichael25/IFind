@@ -3,6 +3,10 @@ if(!isset($_SESSION)){
   session_start();
 }
 
+if (isset($_POST['save'])) 
+{ 
+	include "pdftest.php";
+}  
 ?>
 
 <!DOCTYPE html>
@@ -128,7 +132,7 @@ if(!isset($_SESSION)){
 			
 			<div class="form-group">
 			<label class="col-md-4 control-label" for="Add"></label>
-			<div class="col-md-4">
+			<div class="btn-group">
 				<button type="submit" id="addBtn" class="btn btn-primary">Add</button>
 				<button type="button" onclick ="clearCourse(); hideCourseForm();" class="btn btn-primary">Cancel</button>
 			</div>
@@ -156,10 +160,12 @@ if(!isset($_SESSION)){
 			
 			<div class="form-group">
 			<label class="col-md-4 control-label" for="delete"></label>
-			<div class="col-md-4">
+			<!-- <div class="col-md-4"> -->
+			<div class="btn-group">
 				<button type="button" id="addBtn" onclick="deleteCourse();" class="btn btn-danger">Delete</button>
 				<button type="button" onclick ="clearCourse(); hideDeleteForm();" class="btn btn-primary">Cancel</button>
 			</div>
+			<!-- </div> -->
 			</div>
 			</fieldset>
 		</form>
@@ -170,6 +176,7 @@ if(!isset($_SESSION)){
 					<div class ="form-group">
 						<button type="button" onclick ="clearFields(); AddCourseForm();" class="btn btn-info">Add Courses</button>
 						<button type="button" onclick ="clearFields(); showDeleteForm(); getUserCourses();" class="btn btn-info">Delete Courses</button>
+						<button type="button" name="save" onclick="window.location.href = 'pdf.php'" class="btn btn-info">Save Timetable</button>
 					</div>
 				</div>
 				
