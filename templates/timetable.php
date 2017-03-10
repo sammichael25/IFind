@@ -2,11 +2,6 @@
 if(!isset($_SESSION)){
   session_start();
 }
-
-if (isset($_POST['save'])) 
-{ 
-	include "pdftest.php";
-}  
 ?>
 
 <!DOCTYPE html>
