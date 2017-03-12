@@ -9,6 +9,6 @@ $dompdf = new Dompdf();
     require_once("tableonly.php");
     //$dompdf = new DOMPDF();
     $dompdf->load_html(ob_get_clean());
-	$dompdf->setPaper('A4', 'landscape');
+	//$dompdf->setPaper('A4', 'landscape');
     $dompdf->render();
     $dompdf->stream("Timetable.pdf");
