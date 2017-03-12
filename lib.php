@@ -1,4 +1,5 @@
 <?php
+include "course.php";
 if(!session_id()) session_start();//If session is not started start session
 
 function getDBConnection(){
@@ -131,7 +132,6 @@ function getAllUserCourses(){
 
 
 function genTimetable(){ //retrieving courses to generate the timetable for the user 
-include "course.php";
 $userId = $_SESSION['id'];	
 $db = getDBConnection();
 $sql = "SELECT c.courseCode, u.courseCode, courseName, roomId, sTime, fTime, day FROM course c JOIN user_course u ON u.courseCode = c.courseCode AND u.userId = $userId";
@@ -267,5 +267,26 @@ $courses = array( //associative 2D array using Days and Time as the indices
 	}
 	echo "</table>";
 }
+
+function retrieveGPS($roomID){ 
+//echo "<h1>".$_GET['roomID']."</h1>";
+
+$sql= "SELECT gpsLat, gpsLng
+       FROM building
+       JOIN room
+       ON building.buildingId = room.buildingId
+       AND room.roomID = '$roomID'
+       "; //statement to retrieve gps coordinates of building
+
+$db = getDBConnection(); //lib.php included for this method to work
+$result=$db->query($sql);
+while ($row=$result->fetch_assoc()){
+  $gpsLat=$row["gpsLat"]; //storing latitude of the building table into variable gpsLat
+  $gpsLng=$row["gpsLng"]; //storing latitude of the building table into variable gpsLng
+}
+return array('gpsLat'=> $gpsLat,'gpsLng' => $gpsLng);
+}
+// echo $gpsLat;
+// echo $gpsLng;
 
 ?>

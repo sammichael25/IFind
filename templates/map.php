@@ -1,5 +1,8 @@
 <?php
-echo "<h1>".$_GET['roomID']."</h1>"; 
+if(!isset($_SESSION)){session_start();}
+include "../lib.php";
+$roomID = $_GET['roomID']; //retrieving roomid from timetable and storing it in variable roomID
+$GPS=retrieveGPS($roomID);
 ?>
 
 <!DOCTYPE html>
@@ -17,7 +20,7 @@ echo "<h1>".$_GET['roomID']."</h1>";
     <div id="map"></div>
     <script>
       function initMap() {
-        var uluru = {lat: 10.640991, lng:  -61.400279}; //These coordinates need to be retrieved from database
+        var uluru = {lat:<?php echo $GPS['gpsLat'] ?>, lng:<?php echo $GPS['gpsLng'] ?>}; //These coordinates need to be retrieved from retrieveGPS.php
         var map = new google.maps.Map(document.getElementById('map'), {
           zoom: 20,
           center: uluru
