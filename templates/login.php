@@ -25,7 +25,7 @@
 <body id="timetable">
     <div class="container-fluid" id="header-container">
         <div class="row">
-            <div class="col-md-3 col-md-offset-3 center">
+            <div class="col-md-3 col-md-offset-5 center">
                 <a class="header" href="#">
                     <img src="images/logo.png" id="logo2" alt="logo">
                 </a>
@@ -33,10 +33,10 @@
         </div>
     </div>
    <!-- /.signup form -->
-   <div class="row" id="body-row">
-       <div class="container-fluid" id="box">
-       <div class="col-md-3 col-md-offset-3" id="signup-hd2">
-           <div class="signup-header1 wow fadeInUp">
+   <div class="container-fluid" id="body-row">
+    <div class="row" id="box"> 
+       <div class="col-md-offset-3" id="signup-hd2">
+           <div class="signup-header1">
            <h3 class="form-title text-center">Sign Up Now!</h3>
            <p >Don't have an account.</p><p>Click the button below to sign up now</p><br>
            <form class="form-header" action="templates/signup.phtml" role="form" method="GET" id="#">
@@ -46,9 +46,8 @@
             </form>
            </div>
        </div>
-       <vr></vr>
-		<div class="col-md-3 col-md-offset-7" id="signup-hd2">
-			<div class="signup-header2 wow fadeInUp">
+		<div class="col-md-offset-7" id="signup-hd2">
+			<div class="signup-header1">
 				<h3 class="form-title text-center">Login</h3>
 
 				<form name="logForm" enctype="multipart/form-data" class="form-header" method="POST" action="templates/timetable.phtml" onsubmit="return login();">
@@ -71,7 +70,7 @@
     </div>
 	<!-- /.footer -->
 	
-        
+        <div class="container-fluid" id="footer-container">
 		<div class="row" id="footer-row">
             <footer id="timetablefooter">
             <div class="container">
@@ -82,7 +81,7 @@
             </div>	
              </footer>
 			</div>
-			
+		</div>	
 <script src="js/main.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>		
