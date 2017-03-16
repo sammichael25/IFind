@@ -50,7 +50,7 @@
 			<div class="signup-header1">
 				<h3 class="form-title text-center">Login</h3>
 
-				<form name="logForm" enctype="multipart/form-data" class="form-header" method="POST" action="templates/timetable.phtml" onsubmit="return login();">
+				<form name="logForm" enctype="multipart/form-data" class="form-header" method="POST" onsubmit="return login();">
 					<input type="hidden" name="u" value="503bdae81fde8612ff4944435">
 					<input type="hidden" name="id" value="bfdba52708">
 					<div class="form-group">
