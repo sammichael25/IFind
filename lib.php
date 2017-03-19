@@ -268,25 +268,18 @@ $courses = array( //associative 2D array using Days and Time as the indices
 	echo "</table>";
 }
 
-function retrieveGPS($roomID){ 
-//echo "<h1>".$_GET['roomID']."</h1>";
-
-$sql= "SELECT gpsLat, gpsLng
-       FROM building
-       JOIN room
-       ON building.buildingId = room.buildingId
-       AND room.roomID = '$roomID'
-       "; //statement to retrieve gps coordinates of building
+function retrieveURL($roomID){ 
+$sql= "SELECT url
+       FROM room
+       where roomid='$roomID';
+       "; //statement to retrieve url location of the 
 
 $db = getDBConnection(); //lib.php included for this method to work
 $result=$db->query($sql);
-while ($row=$result->fetch_assoc()){
-  $gpsLat=$row["gpsLat"]; //storing latitude of the building table into variable gpsLat
-  $gpsLng=$row["gpsLng"]; //storing latitude of the building table into variable gpsLng
+while (($row=$result->fetch_assoc())!=null){
+	$url=$row['url'];
 }
-return array('gpsLat'=> $gpsLat,'gpsLng' => $gpsLng);
+return $url;
 }
-// echo $gpsLat;
-// echo $gpsLng;
 
 ?>

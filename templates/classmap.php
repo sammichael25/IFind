@@ -2,7 +2,8 @@
 if(!isset($_SESSION)){session_start();}
 include "../lib.php";
 $roomID = $_GET['roomID']; //retrieving roomid from timetable and storing it in variable roomID
-$GPS=retrieveGPS($roomID);
+$url=retrieveURL($roomID); //retrieving location of classroom
+//echo $url;
 ?>
 
 <!DOCTYPE html>
@@ -16,7 +17,7 @@ $GPS=retrieveGPS($roomID);
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Timetable</title>
+    <title><?php echo $roomID ?></title> <!-- printing room id in windows tab -->
 
 <!-- Custom CSS -->
 <link href="../css/logo-nav.css" rel="stylesheet">
@@ -102,7 +103,7 @@ $GPS=retrieveGPS($roomID);
                 <br>
 				
 				<div class="panel panel-primary">
-					<iframe width="100%" height="500" frameborder="0" scrolling="yes" marginheight="0" marginwidth="0" src="https://anyplace.cs.ucy.ac.cy/viewer?buid=building_857058eb-86c3-4156-8b9d-9e211ccfd5e4_1489534131482&floor=0&selected=poi_3131739d-fabe-49bf-95ce-67f9afafd38f"></iframe>
+					<iframe width="100%" height="500" frameborder="0" marginheight="0" marginwidth="0" src="<?php echo $url?>"></iframe>
 						
 				</div>
 			</div>
