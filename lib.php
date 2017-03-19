@@ -261,7 +261,7 @@ $courses = array( //associative 2D array using Days and Time as the indices
 		echo "<tr><td>".$time_intervals[$i++]."</td>"; //i need to iterate all these times
     foreach($times as $days => $value){
 		//echo $value->courseCode;
-		echo "<td>".$value->courseCode."<br>".$value->courseName."<br>"."<a href='map.php?roomID=".$value->roomId."'>".$value->roomId."</a>"."</td>"; //roomId is hyperlinked and sent as variable to google map page
+		echo "<td>".$value->courseCode."<br>".$value->courseName."<br>"."<a href='classmap.php?roomID=".$value->roomId."'>".$value->roomId."</a>"."</td>"; //roomId is hyperlinked and sent as variable to google map page
 	}
 	echo "</tr>";
 	}
