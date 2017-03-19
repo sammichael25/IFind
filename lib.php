@@ -268,10 +268,10 @@ $courses = array( //associative 2D array using Days and Time as the indices
 	echo "</table>";
 }
 
-function retrieveURL($roomID){ 
+function retrieveURL($roomId){ 
 $sql= "SELECT url
        FROM room
-       where roomid='$roomID';
+       where roomid='$roomId';
        "; //statement to retrieve url location of the 
 
 $db = getDBConnection(); //lib.php included for this method to work
