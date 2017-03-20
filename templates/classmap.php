@@ -120,7 +120,7 @@ $url=retrieveURL($roomID); //retrieving location of classroom
         <footer id="indexfooter">
             <div class="row">
                 <div class="col-lg-12">
-                    <p>Copyright &copy; Your Website 2017</p>
+                    <p>Copyright &copy; IFind 2017</p>
                 </div>
             </div>
             <!-- /.row -->
