@@ -1,4 +1,5 @@
 <?php
+include "course.php";
 if(!session_id()) session_start();//If session is not started start session
 
 function getDBConnection(){
@@ -131,7 +132,6 @@ function getAllUserCourses(){
 
 
 function genTimetable(){ //retrieving courses to generate the timetable for the user 
-include "course.php";
 $userId = $_SESSION['id'];	
 $db = getDBConnection();
 $sql = "SELECT c.courseCode, u.courseCode, courseName, roomId, sTime, fTime, day FROM course c JOIN user_course u ON u.courseCode = c.courseCode AND u.userId = $userId";
@@ -261,11 +261,25 @@ $courses = array( //associative 2D array using Days and Time as the indices
 		echo "<tr><td>".$time_intervals[$i++]."</td>"; //i need to iterate all these times
     foreach($times as $days => $value){
 		//echo $value->courseCode;
-		echo "<td>".$value->courseCode."<br>".$value->courseName."<br>"."<a href='map.php?roomID=".$value->roomId."'>".$value->roomId."</a>"."</td>"; //roomId is hyperlinked and sent as variable to google map page
+		echo "<td>".$value->courseCode."<br>".$value->courseName."<br>"."<a href='classmap.php?roomID=".$value->roomId."'>".$value->roomId."</a>"."</td>"; //roomId is hyperlinked and sent as variable to google map page
 	}
 	echo "</tr>";
 	}
 	echo "</table>";
+}
+
+function retrieveURL($roomId){ 
+$sql= "SELECT url
+       FROM room
+       where roomid='$roomId';
+       "; //statement to retrieve url location of the 
+
+$db = getDBConnection(); //lib.php included for this method to work
+$result=$db->query($sql);
+while (($row=$result->fetch_assoc())!=null){
+	$url=$row['url'];
+}
+return $url;
 }
 
 ?>
