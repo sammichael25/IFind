@@ -50,7 +50,7 @@ $url=retrieveURL($roomID); //retrieving location of classroom
                     </li>
                     <li>
 						<!-- <button type="button" onclick="showSearchBar();" class="btn btn-info">Search Classroom</button> -->
-						<a id="showSearchBar" href="#" onclick="showSearchBar(); retrieveAllRooms(); return false;">Search Classroom</a>
+						<a id="showSearchBar" href="#" onclick="showSearchBar(); return false;">Search Classroom</a>
 					</li>
 					</ul>
 					<ul>
