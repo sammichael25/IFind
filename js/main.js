@@ -4,6 +4,8 @@ $(document).ready(function(){
 	$('#saveT').click(function(){
 		window.location.href = 'pdf.php';
 		});
+		
+		retrieveAllRooms();
 	});
 //-----------------------------------------------
 //Gather and process data
