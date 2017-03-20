@@ -7,19 +7,18 @@
 //-----------------------------------------------
 //Gather and process data
 
-/*function retrieveAllCourses(){
+function retrieveAllRooms(){
 	//alert("hi");
-	$.get("../index.php/courses", processAllCourses, "json"); 
+	$.get("../index.php/rooms", processAllRooms, "json"); 
 	}
 
-function processAllCourses(records){
-    if ($("#courseCode").length > 0){ // the course code select is available so we can display all courses
-        records.forEach(function(course){
-            var htmlStr = "<option value='"+course.courseCode+"'>"+ course.courseCode+"</option>";
-            $("#courseCode").append(htmlStr);
+function processAllRooms(records){
+        records.forEach(function(room){
+            var htmlStr = "<option value='"+room.roomId+"'>"+ room.roomId+"</option>";
+            $("#rooms").append(htmlStr);
         })
     }
-}*/
+	
 function retrieveAllDepartment(){
 	$.get("index.php/departments", processAllDepartments, "json"); 
 	}

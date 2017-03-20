@@ -63,6 +63,13 @@ $app->get("/departments", function(Request $request, Response $response){
 	return $response;
 });
 
+$app->get("/rooms", function(Request $request, Response $response){
+	$rooms = getAllRooms();
+	
+	$response = $response->withJson($rooms);
+	return $response;
+});
+
 $app->get("/timetable", function(Request $request, Response $response){
 	$timetable = getUserTable();
 	

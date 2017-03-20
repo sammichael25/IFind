@@ -87,6 +87,20 @@ function getAllDepartments(){
 	return $departments;
 }
 
+function getAllRooms(){
+	$db = getDBConnection();
+	$rooms = [];
+	if ($db != null){
+		$sql = "SELECT roomId FROM `room`";
+		$res = $db->query($sql);
+		while($res && $row = $res->fetch_assoc()){
+			$rooms[] = $row;
+		}
+		$db->close();
+	}
+	return $rooms;
+}
+
 function saveCourse($courseCode){
 	$userId = $_SESSION['id'];
 	$sql = "INSERT INTO `user_course` (`userId`, `courseCode`) VALUES ('$userId', '$courseCode')";
