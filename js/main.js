@@ -1,9 +1,10 @@
 "use strict";
 
-/*$(document).ready(function(){
-	retrieveAllCourses();
-	retrieveUserData();
-	});*/
+$(document).ready(function(){
+	$('#saveT').click(function(){
+		window.location.href = 'pdf.php';
+		});
+	});
 //-----------------------------------------------
 //Gather and process data
 
@@ -218,6 +219,8 @@ function search(){
 	
 	window.location.href = '../templates/classmap.php?roomID='+roomID;
 }
+
+
 //-----------------------------------------
 //show and hide functions
 function AddCourseForm(){

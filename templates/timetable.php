@@ -178,7 +178,7 @@ if(empty($_SESSION)){
 					<div class ="form-group">
 						<button type="button" onclick ="clearFields(); AddCourseForm();" class="btn btn-info"><span class="glyphicon glyphicon-plus"></span> Add Courses</button>
 						<button type="button" onclick ="clearFields(); showDeleteForm(); getUserCourses();" class="btn btn-info"><span class="glyphicon glyphicon-trash"></span> Delete Courses</button>
-						<button type="button" name="save" onclick="window.location.href = 'pdf.php'" class="btn btn-info"><span class="glyphicon glyphicon-download"></span> Save Timetable</button>
+						<button id="saveT" type="button" name="save"  class="btn btn-info"><span class="glyphicon glyphicon-download"></span> Save Timetable</button>
 					</div>
 				</div>
 				
@@ -210,9 +210,10 @@ if(empty($_SESSION)){
 		
 	</div>	
 	
-<script src="../js/main.js"></script>
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>		
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>	
+	
+<script src="../js/main.js"></script>
 
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 
