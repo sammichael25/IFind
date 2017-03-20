@@ -194,7 +194,7 @@ function login(){
     $.post("index.php/login", user, function(res){
         if(res.loginstatus){
             swal({
-				title: "succes",
+				title: "success",
 				text: "Login confirmed",
 				type: "success",
 				showCancelButton: false,
