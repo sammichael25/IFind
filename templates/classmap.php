@@ -50,7 +50,7 @@ $url=retrieveURL($roomID); //retrieving location of classroom
                     </li>
                     <li>
 						<!-- <button type="button" onclick="showSearchBar();" class="btn btn-info">Search Classroom</button> -->
-						<a id="showSearchBar" href="#" onclick="showSearchBar(); return false;">Search Classroom</a>
+						<a id="showSearchBar" href="#" onclick="showSearchBar(); retrieveAllRooms(); return false;">Search Classroom</a>
 					</li>
 					</ul>
 					<ul>
@@ -58,7 +58,10 @@ $url=retrieveURL($roomID); //retrieving location of classroom
 						<div id ="classroomSearch" style ="display:none;">
 								<div id="custom-search-input">
 									<div class="input-group col-sm-4">
-										<input id="roomID" name="roomID" type="text" class="form-control input-sm" placeholder="Search.." />
+										<input id="roomID" name="roomID" list="rooms" type="text" class="form-control input-sm" placeholder="Search.." />
+											<datalist id="rooms">
+											<option value="">rooms..</option>
+											</datalist>
 											<div class="input-group-btn">
 												<button onclick ="search(); hideSearchBar();" class="btn btn-info btn-sm" type="button">
 												<i class="glyphicon glyphicon-search"></i>
