@@ -296,4 +296,18 @@ while (($row=$result->fetch_assoc())!=null){
 return $url;
 }
 
+function checkRoom($roomId){
+	$sql = "SELECT * FROM `room` where `roomId`='$roomId'";
+	$db = getDBConnection();
+	if($db != NULL){
+		$res = $db->query($sql);
+		if ($res && $row = $res->fetch_assoc()){
+			if($row['roomId'] == $roomId){
+				return true;
+			}
+		}
+	}
+	return false;
+}
+
 ?>
