@@ -212,30 +212,12 @@ function login(){
     return false;
 }
 
-function retrieveUserData(){
-    $.get("../index.php/timetable", processUserData, "json");
-}
-
-function processUserData(records){
-    console.log(records);
-    createTable(records)
-}
-
-function createTable(records){
-    var key;
-    var sec_id = "#table_secm";
-    var htmlStr = $("#table_headingm").html(); //Includes all the table, thead and tbody declarations
+function search(){
+	var roomID = $("#roomID").val();
 	
-    records.forEach(function(el){
-        htmlStr += "<tr>";
-        htmlStr += "<td>" + el['sTime'] + "-" + el['fTime'] + "</td>";
-        htmlStr += "<td>" + el['courseName'] + "     " + el['roomId'] + "</td>";
-        //htmlStr += "<td>"+ el['roomId'] +"</td>";
-        htmlStr +=" </tr>" ;
-    });
-
-    htmlStr += "</tbody></table>";
-    $(sec_id).html(htmlStr);
+	alert(roomID);
+	
+	window.location.href = '../templates/classmap.php?roomID='+roomID;
 }
 //-----------------------------------------
 //show and hide functions
