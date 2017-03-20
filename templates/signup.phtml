@@ -57,7 +57,7 @@
   <label class="col-md-4 control-label" for="email">Email <span style="color:red">*</span> </label>  
   <div class="col-md-4">
   <input id="email" name="email" placeholder="janedoe@domain.com" class="form-control input-md" ng-model-options="{ updateOn: 'blur' }" ng-model="user.email" type="email" placeholder="johnDoe@example.com" class="form-control input-md" required="">
-  <p ng-show="userForm.email.$error.email" class="help-block" >Invalid Email Address</p>    
+  <p ng-show="userForm.email.$error.email" class="help-block alert-danger" >Invalid Email Address</p>    
   </div>
 </div>
 
@@ -66,8 +66,8 @@
   <label class="col-md-4 control-label" for="password">Password <span style="color:red">*</span> </label>
   <div class="col-md-4">
     <input id="password" name="password" type="password" placeholder="" class="form-control input-md" data-ng-model="user.password" ng-minlength="8" ng-maxlength="25" required="">
-    <p ng-show="userForm.password.$error.minlength" class="help-block">Password is too short.</p>
-  <p ng-show="userForm.password.$error.maxlength" class="help-block">Password is too long.</p>
+    <p ng-show="userForm.password.$error.minlength" class="help-block alert-danger">Password is too short.</p>
+  <p ng-show="userForm.password.$error.maxlength" class="help-block alert-danger">Password is too long.</p>
   </div>
 </div>
 
@@ -76,7 +76,7 @@
   <label class="col-md-4 control-label" for="password2">Confirm Password <span style="color:red">*</span> </label>
   <div class="col-md-4">
     <input id="password2" name="password2" type="password" placeholder="" class="form-control input-md" ng-model-options="{ updateOn: 'blur' }" ng-model="user.password2" required data-password-verify="user.password" required="">
-  <p ng-show="userForm.password2.$error.passwordVerify" class="help-block">Passwords do not match </p>
+  <p ng-show="userForm.password2.$error.passwordVerify" class="help-block alert-danger">Passwords do not match </p>
     
   </div>
 </div>
@@ -101,7 +101,7 @@
         <footer id="indexfooter">
             <div class="row">
                 <div class="col-lg-12">
-                    <p>Copyright &copy; Your Website 2017</p>
+                    <p>Copyright &copy; IFind 2017</p>
                 </div>
             </div>
             <!-- /.row -->
