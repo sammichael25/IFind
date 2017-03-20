@@ -58,9 +58,9 @@ $url=retrieveURL($roomID); //retrieving location of classroom
 						<div id ="classroomSearch" style ="display:none;">
 								<div id="custom-search-input">
 									<div class="input-group col-sm-4">
-										<input type="text" class="form-control input-sm" placeholder="Search.." />
+										<input id="roomID" name="roomID" type="text" class="form-control input-sm" placeholder="Search.." />
 											<div class="input-group-btn">
-												<button onclick ="hideSearchBar();" class="btn btn-info btn-sm" type="button">
+												<button onclick ="search(); hideSearchBar();" class="btn btn-info btn-sm" type="button">
 												<i class="glyphicon glyphicon-search"></i>
 												</button>
 												<button onclick ="hideSearchBar();" class="btn btn-info btn-sm" type="button">

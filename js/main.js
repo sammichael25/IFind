@@ -215,7 +215,7 @@ function login(){
 function search(){
 	var roomID = $("#roomID").val();
 	
-	alert(roomID);
+	//alert(roomID);
 	
 	window.location.href = '../templates/classmap.php?roomID='+roomID;
 }
