@@ -214,10 +214,16 @@ function login(){
 
 function search(){
 	var roomID = $("#roomID").val();
-	
+	var room = roomID.toUpperCase();
 	//alert(roomID);
-	
-	window.location.href = '../templates/classmap.php?roomID='+roomID;
+	$.get("../index.php/roomExist/"+room,function(res){
+		if(res.exist){
+	window.location.href = '../templates/classmap.php?roomID='+room;
+		}
+		else{
+			swal("Room Not Found!", "Please Check Your Spelling", "error");
+		}
+	});
 }
 
 

@@ -90,6 +90,19 @@ $app->get("/delcourse/{id}", function(Request $request, Response $response){
 	return $response;
 });
 
+$app->get("/roomExist/{id}", function(Request $request, Response $response){
+	$data = $request->getAttribute('id');
+	$res = checkRoom($data);
+	
+	if($res){
+		$response = $response->withStatus(201);
+		$response = $response->withJson(array("exist" => true));
+	}else{
+		$response = $response->withJson(false);
+	}
+	return $response;
+});
+
 $app->post("/signup", function(Request $request, Response $response){
 	$post = $request->getParsedBody();
 	$fname = $post['fname'];
