@@ -7,7 +7,7 @@ $(document).ready(function(){
 	
 	$('a[rel=popover]').popover({
 		html: true,
-		trigger: 'click',
+		//trigger: 'click',
 		placement: 'bottom',
 		content: function(){return '<img src="'+$(this).data('img') + '" />';}
 		});

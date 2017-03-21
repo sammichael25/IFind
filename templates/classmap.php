@@ -103,7 +103,7 @@ $entrance=getImg($roomID);
 	<div class="container" >
 		<div class="row">   
             <div class="col-md-12">
-                <h2>Map of <a class="btn" rel="popover" data-img="<?php echo $entrance?>"><h4><?php echo $roomID;?></h4></a></h2>
+                <h2>Map of <a tabindex="0" class="btn" rel="popover" data-trigger="focus" data-img="<?php echo $entrance?>"><h4><?php echo $roomID;?></h4></a></h2>
                 <br>
 				
 				<div class="panel panel-primary">
