@@ -79,11 +79,9 @@ if(empty($_SESSION)){
 						</div>
 					</li>
 					</ul>
-					<ul class="navbar-right">
+					<ul class="navbar-nav navbar-right">
                     <li><a href="logout.php"><span class="glyphicon glyphicon-log-out"></span>Logout</a></li>
 					</ul>
-				</ul>
-                
             </div>
             <!-- /.navbar-collapse -->
         </div>
