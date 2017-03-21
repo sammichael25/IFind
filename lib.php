@@ -310,4 +310,17 @@ function checkRoom($roomId){
 	return false;
 }
 
+function getImg($roomId){
+	$sql = "SELECT entrance FROM `room` where `roomId`='$roomId'";
+	$db = getDBConnection();
+	if($db != NULL){
+		$res = $db->query($sql);
+		while (($row=$res->fetch_assoc())!=null){
+			$entrance = $row['entrance'];
+		}
+		return $entrance;
+	}
+}
+
+
 ?>

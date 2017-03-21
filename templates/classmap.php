@@ -3,6 +3,7 @@ if(!isset($_SESSION)){session_start();}
 include "../lib.php";
 $roomID = $_GET['roomID']; //retrieving roomid from timetable and storing it in variable roomID
 $url=retrieveURL($roomID); //retrieving location of classroom
+$entrance=getImg($roomID);
 //echo $url;
 ?>
 
@@ -102,7 +103,7 @@ $url=retrieveURL($roomID); //retrieving location of classroom
 	<div class="container" >
 		<div class="row">   
             <div class="col-md-12">
-                <h2>Map of <?php echo $roomID;?></h2>
+                <h2>Map of <a class="btn" rel="popover" data-img="<?php echo $entrance?>"><h4><?php echo $roomID;?></h4></a></h2>
                 <br>
 				
 				<div class="panel panel-primary">
