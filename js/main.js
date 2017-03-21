@@ -4,8 +4,15 @@ $(document).ready(function(){
 	$('#saveT').click(function(){
 		window.location.href = 'pdf.php';
 		});
-		
-		retrieveAllRooms();
+	
+	$('a[rel=popover]').popover({
+		html: true,
+		trigger: 'click',
+		placement: 'bottom',
+		content: function(){return '<img src="'+$(this).data('img') + '" />';}
+		});
+
+	retrieveAllRooms();
 	});
 //-----------------------------------------------
 //Gather and process data
